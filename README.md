@@ -14,7 +14,7 @@ Check out the live demo of College Buddy here: [College Buddy Demo](https://sach
 To run this project locally:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/college_buddy.git
+   git clone https://github.com/sachinskyte/college_buddy.git
    ```
 2. Navigate to the project directory:
    ```bash
