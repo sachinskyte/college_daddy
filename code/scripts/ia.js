@@ -1,4 +1,26 @@
 
+function toggleResultsTable() {
+    const table = document.getElementById('results-table');
+    const isChecked = document.getElementById('toggleTable').checked;
+    table.style.display = isChecked ? 'table' : 'none';
+}
+
+function toggleResultsTable() {
+const table = document.getElementById('gradeTable');
+const isChecked = document.getElementById('toggleTable').checked;
+table.style.display = isChecked ? 'table' : 'none';
+}
+
+const gradeScale = [
+    { grade: 'O', points: 10, minMarks: 90 },
+    { grade: 'A+', points: 9, minMarks: 80 },
+    { grade: 'A', points: 8, minMarks: 70 },
+    { grade: 'B+', points: 7, minMarks: 60 },
+    { grade: 'C+', points: 6, minMarks: 50 },
+    { grade: 'C', points: 5, minMarks: 40 },
+    { grade: 'F', points: 0, minMarks: 0 }
+];
+
 function calculateMarks() {
     // Get input values
     const series1 = parseFloat(document.getElementById('series1').value) || 0;
@@ -24,29 +46,45 @@ function calculateMarks() {
     // Calculate total
     const total = Math.round(scaledSeries + scaledAssignments + scaledModules + graceMarks);
 
-    // Display results with smooth animation
-    const results = document.getElementById('results');
-    results.style.display = 'block';
-    results.style.opacity = '0';
-    setTimeout(() => {
-        results.style.opacity = '1';
-        results.style.transition = 'opacity 0.3s ease';
-    }, 50);
-
-    // Update all result values
+    // Display results
+    document.getElementById('results').style.display = 'block';
     document.getElementById('scaledSeries').textContent = scaledSeries.toFixed(2) + '/25';
     document.getElementById('scaledAssignments').textContent = scaledAssignments.toFixed(2) + '/10';
     document.getElementById('scaledModules').textContent = scaledModules.toFixed(2) + '/15';
     document.getElementById('graceMarksDisplay').textContent = graceMarks.toFixed(2);
     document.getElementById('totalMarks').textContent = total + '/50';
 
-    // Check eligibility
+    // Update eligibility
     const eligibilityDiv = document.getElementById('eligibility');
-    if (total > 20) {
+    if (total >= 20) {
         eligibilityDiv.className = 'eligibility eligible';
         eligibilityDiv.innerHTML = '<i class="fas fa-check-circle"></i> Eligible to attempt SEE exam';
+        calculateRequiredSEE(total);
+        document.getElementById('gradeTable').style.display = 'table';
     } else {
         eligibilityDiv.className = 'eligibility not-eligible';
         eligibilityDiv.innerHTML = '<i class="fas fa-times-circle"></i> Not eligible to attempt SEE exam';
+        document.getElementById('gradeTable').style.display = 'none';
     }
 }
+
+function calculateRequiredSEE(internalMarks) {
+    const tbody = document.getElementById('gradeTableBody');
+    tbody.innerHTML = '';
+
+    gradeScale.forEach(({grade, points, minMarks}) => {
+        const requiredTotal = minMarks;
+        const requiredSEE = Math.ceil((requiredTotal - internalMarks) * 2);
+        
+        if (requiredSEE <= 100 && requiredSEE > 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${grade}</td>
+                <td>${points}</td>
+                <td>${requiredSEE}</td>
+            `;
+            tbody.appendChild(row);
+        }
+    });
+}
+
