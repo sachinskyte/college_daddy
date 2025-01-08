@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Marks Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 16px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: #111;
+            padding: 24px;
+            border-radius: 16px;
+            width: 96%;
+            max-width: 1024px;
+            box-shadow: 0 0 40px rgba(0, 157, 255, 0.15);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        .header h1 {
+            color: #009dff;
+            margin: 0;
+            font-size: 2.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .header p {
+            color: #666;
+            margin: 8px 0 0 0;
+            font-size: 0.95em;
+        }
+        .section {
+            background-color: #161616;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            border-color: #009dff;
+            box-shadow: 0 0 20px rgba(0, 157, 255, 0.1);
+        }
+        .section-title {
+            color: #009dff;
+            margin-bottom: 20px;
+            font-size: 1.25em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i {
+            background: rgba(0, 157, 255, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .input-group {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+        .input-group .max-marks {
+            color: #666;
+            font-size: 0.85em;
+            position: absolute;
+            right: 12px;
+            top: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #2a2a2a;
+            border-radius: 10px;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            border-color: #009dff;
+            box-shadow: 0 0 15px rgba(0, 157, 255, 0.15);
+        }
+        input:hover {
+            border-color: #444;
+        }
+        button {
+            width: 100%;
+            padding: 16px;
+            background-color: #009dff;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 24px 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        button:hover {
+            background-color: #00b3ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 157, 255, 0.2);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .result-section {
+            background: linear-gradient(145deg, #161616, #1a1a1a);
+            padding: 24px;
+            border-radius: 12px;
+            margin-top: 24px;
+            display: none;
+            border: 1px solid #222;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 16px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .result-item:hover {
+            background-color: #222;
+        }
+        .result-label {
+            color: #ccc;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+        .result-value {
+            font-weight: 600;
+            color: #00ff88;
+            font-size: 1.1em;
+        }
+        .eligibility {
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .eligible {
+            background-color: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        .not-eligible {
+            background-color: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+            border: 1px solid rgba(255, 68, 68, 0.2);
+        }
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 8px;
+            color: #666;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85em;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <i class="fas fa-calculator"></i> Final Marks Calculator
+            </h1>
+            <p>Calculate your total marks and SEE exam eligibility</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-book"></i> Series Exams
+                <div class="tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">Each exam is out of 50 marks</span>
+                </div>
+            </div>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>Series Exam 1</label>
+                    <span class="max-marks">/50</span>
+                    <input type="number" id="series1" min="0" max="50" step="0.5" placeholder="Enter marks">
+                </div>
+                <div class="input-group">
+                    <label>Series Exam 2</label>
+                    <span class="max-marks">/50</span>
+                    <input type="number" id="series2" min="0" max="50" step="0.5" placeholder="Enter marks">
+                </div>
+                <div class="input-group">
+                    <label>Series Exam 3</label>
+                    <span class="max-marks">/50</span>
+                    <input type="number" id="series3" min="0" max="50" step="0.5" placeholder="Enter marks">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-tasks"></i> Assignments
+                <div class="tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">Each assignment is out of 10 marks</span>
+                </div>
+            </div>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>Assignment 1</label>
+                    <span class="max-marks">/10</span>
+                    <input type="number" id="assignment1" min="0" max="10" step="0.5" placeholder="Enter marks">
+                </div>
+                <div class="input-group">
+                    <label>Assignment 2</label>
+                    <span class="max-marks">/10</span>
+                    <input type="number" id="assignment2" min="0" max="10" step="0.5" placeholder="Enter marks">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-clipboard-check"></i> Module Tests
+                <div class="tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">Each test is out of 10 marks</span>
+                </div>
+            </div>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>Module Test 1</label>
+                    <span class="max-marks">/10</span>
+                    <input type="number" id="module1" min="0" max="10" step="0.5" placeholder="Enter marks">
+                </div>
+                <div class="input-group">
+                    <label>Module Test 2</label>
+                    <span class="max-marks">/10</span>
+                    <input type="number" id="module2" min="0" max="10" step="0.5" placeholder="Enter marks">
+                </div>
+                <div class="input-group">
+                    <label>Module Test 3</label>
+                    <span class="max-marks">/10</span>
+                    <input type="number" id="module3" min="0" max="10" step="0.5" placeholder="Enter marks">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-star"></i> Grace Marks
+                <div class="tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">Additional bonus marks (if any)</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="number" id="graceMarks" min="0" max="10" step="0.5" placeholder="Enter grace marks (if any)">
+            </div>
+        </div>
+
+        <button onclick="calculateMarks()">
+            <i class="fas fa-calculator"></i> Calculate Final Marks
+        </button>
+
+        <div id="results" class="result-section">
+            <div class="result-item">
+                <span class="result-label">Scaled Series Exam Marks</span>
+                <span class="result-value" id="scaledSeries">0/25</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Scaled Assignment Marks</span>
+                <span class="result-value" id="scaledAssignments">0/10</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Scaled Module Test Marks</span>
+                <span class="result-value" id="scaledModules">0/15</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Grace Marks</span>
+                <span class="result-value" id="graceMarksDisplay">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Total Marks</span>
+                <span class="result-value" id="totalMarks">0/50</span>
+            </div>
+            <div id="eligibility" class="eligibility"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateMarks() {
+            // Get input values
+            const series1 = parseFloat(document.getElementById('series1').value) || 0;
+            const series2 = parseFloat(document.getElementById('series2').value) || 0;
+            const series3 = parseFloat(document.getElementById('series3').value) || 0;
+            const assignment1 = parseFloat(document.getElementById('assignment1').value) || 0;
+            const assignment2 = parseFloat(document.getElementById('assignment2').value) || 0;
+            const module1 = parseFloat(document.getElementById('module1').value) || 0;
+            const module2 = parseFloat(document.getElementById('module2').value) || 0;
+            const module3 = parseFloat(document.getElementById('module3').value) || 0;
+            const graceMarks = parseFloat(document.getElementById('graceMarks').value) || 0;
+    
+            // Calculate scaled marks
+            const seriesAvg = (series1 + series2 + series3) / 3;
+            const scaledSeries = (seriesAvg / 50) * 25;
+    
+            const assignmentAvg = (assignment1 + assignment2) / 2;
+            const scaledAssignments = assignmentAvg;
+    
+            const moduleAvg = (module1 + module2 + module3) / 3;
+            const scaledModules = (moduleAvg / 10) * 15;
+    
+            // Calculate total
+            const total = Math.round(scaledSeries + scaledAssignments + scaledModules + graceMarks);
+    
+            // Display results with smooth animation
+            const results = document.getElementById('results');
+            results.style.display = 'block';
+            results.style.opacity = '0';
+            setTimeout(() => {
+                results.style.opacity = '1';
+                results.style.transition = 'opacity 0.3s ease';
+            }, 50);
+    
+            // Update all result values
+            document.getElementById('scaledSeries').textContent = scaledSeries.toFixed(2) + '/25';
+            document.getElementById('scaledAssignments').textContent = scaledAssignments.toFixed(2) + '/10';
+            document.getElementById('scaledModules').textContent = scaledModules.toFixed(2) + '/15';
+            document.getElementById('graceMarksDisplay').textContent = graceMarks.toFixed(2);
+            document.getElementById('totalMarks').textContent = total + '/50';
+    
+            // Check eligibility
+            const eligibilityDiv = document.getElementById('eligibility');
+            if (total > 20) {
+                eligibilityDiv.className = 'eligibility eligible';
+                eligibilityDiv.innerHTML = '<i class="fas fa-check-circle"></i> Eligible to attempt SEE exam';
+            } else {
+                eligibilityDiv.className = 'eligibility not-eligible';
+                eligibilityDiv.innerHTML = '<i class="fas fa-times-circle"></i> Not eligible to attempt SEE exam';
+            }
+        }
+    </script>
+</body></html>
