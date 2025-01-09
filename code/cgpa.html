@@ -1,66 +1,119 @@
 <!DOCTYPE html>
-<header>
-    <div class="nav-container">
-        <a href="#" class="logo">College Buddy</a>
-        <button class="menu-button">☰</button>
-        <nav class="nav-links">
-            <a href="home.html" class="nav-link">Home</a>
-            <a href="cgpa.html" class="nav-link">CGPA Calculator</a>
-            <a href="iacal.html" class="nav-link">IA Calculator</a>
-            
-        </nav>
-    </div>
-</header>
-
 <html lang="en">
-   
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CGPA Calculator - Calculate your required CGPA with visual charts">
     <title>Enhanced CGPA Calculator</title>
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-   
-    <link rel="stylesheet" type="text/css" href="css\cgpa.css">
-        <script src="scripts\cgpa.js"></script>
-      
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/cgpa.css">
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" defer></script>
+    <script src="scripts/cgpa.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1 style="text-align: center; color: #009dff; margin-bottom: 25px; font-size: 2em;">
-            <i class="fas fa-calculator"></i> Enhanced CGPA Calculator
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo" aria-label="College Buddy Home">
+                <i class="fas fa-graduation-cap"></i>
+                College Buddy
+            </a>
+            <button class="menu-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="home.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="cgpa.html" class="nav-link active">
+                    <i class="fas fa-calculator"></i>
+                    <span>CGPA Calculator</span>
+                </a>
+                <a href="iacal.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>IA Calculator</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>
+            <i class="fas fa-calculator"></i>
+            Enhanced CGPA Calculator
         </h1>
         
-        <div class="input-group">
-            <label>Current CGPA</label>
-            <input type="number" id="currentCGPA" placeholder="Enter current CGPA" step="0.01" min="0" max="10">
-            <div class="tooltip">
-                <i class="fas fa-question-circle" style="color: #009dff;" title="Enter your current CGPA (0-10)"></i>
+        <form id="cgpaForm" onsubmit="event.preventDefault(); calculate();">
+            <div class="input-group">
+                <label for="currentCGPA">Current CGPA</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="number" 
+                        id="currentCGPA" 
+                        placeholder="Enter current CGPA" 
+                        step="0.01" 
+                        min="0" 
+                        max="10"
+                        required
+                        aria-describedby="currentCGPAHelp"
+                    >
+                    <div class="tooltip">
+                        <i class="fas fa-question-circle" title="Enter your current CGPA (0-10)"></i>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="input-group">
-            <label>Completed Semesters</label>
-            <input type="number" id="completedSem" placeholder="Number of semesters done" min="1" max="7">
-            <div class="tooltip">
-                <i class="fas fa-question-circle" style="color: #009dff;" title="Enter number of completed semesters (1-7)"></i>
+            <div class="input-group">
+                <label for="completedSem">Completed Semesters</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="number" 
+                        id="completedSem" 
+                        placeholder="Number of semesters done" 
+                        min="1" 
+                        max="7"
+                        required
+                        aria-describedby="completedSemHelp"
+                    >
+                    <div class="tooltip">
+                        <i class="fas fa-question-circle" title="Enter number of completed semesters (1-7)"></i>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="input-group">
-            <label>Target CGPA</label>
-            <input type="number" id="targetCGPA" placeholder="CGPA you want to achieve" step="0.01" min="0" max="10">
-            <div class="tooltip">
-                <i class="fas fa-question-circle" style="color: #009dff;" title="Enter your target CGPA (0-10)"></i>
+            <div class="input-group">
+                <label for="targetCGPA">Target CGPA</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="number" 
+                        id="targetCGPA" 
+                        placeholder="CGPA you want to achieve" 
+                        step="0.01" 
+                        min="0" 
+                        max="10"
+                        required
+                        aria-describedby="targetCGPAHelp"
+                    >
+                    <div class="tooltip">
+                        <i class="fas fa-question-circle" title="Enter your target CGPA (0-10)"></i>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <button onclick="calculate()">
-            <i class="fas fa-chart-line"></i> Calculate Required CGPA
-        </button>
+            <button type="submit" class="calculate-btn">
+                <i class="fas fa-chart-line"></i>
+                Calculate Required CGPA
+            </button>
+        </form>
         
-        <div id="error"></div>
+        <div id="error" role="alert" aria-live="polite"></div>
         
-        <div id="result">
+        <div id="result" aria-live="polite">
             <div class="result-grid">
                 <div class="result-item">
                     <div class="value" id="requiredCGPA">0.00</div>
@@ -71,18 +124,20 @@
                     <div class="label">Remaining Semesters</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="charts-container">
-            <div class="chart-wrapper">
-                <canvas id="progressChart"></canvas>
+            
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <canvas id="progressChart" aria-label="CGPA Progress Chart" role="img"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="semesterChart" aria-label="Required CGPA per Semester Chart" role="img"></canvas>
+                </div>
             </div>
-            <div class="chart-wrapper">
-                <canvas id="semesterChart"></canvas>
-            </div>
         </div>
-    </div>
-<script src="scripts\cgpa.js"></script>
-    
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 College Buddy. All rights reserved.</p>
+    </footer>
 </body>
 </html>
