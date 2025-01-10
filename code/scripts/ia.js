@@ -1,3 +1,5 @@
+
+
 function toggleResultsTable() {
     const table = document.getElementById('results-table');
     const isChecked = document.getElementById('toggleTable').checked;
