@@ -189,29 +189,20 @@
         }
     </style>
 </head>
-    <body>
+<body>
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo" aria-label="College Buddy Home">
                 <i class="fas fa-graduation-cap"></i>
-                <span>College Buddy</span>
+                College Buddy
             </a>
-            <button class="menu-button" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="index.html" class="nav-link">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-                <a href="cgpa.html" class="nav-link">
-                    <i class="fas fa-calculator"></i>  
-                    <span>CGPA Calculator</span>
-                </a>
-                <a href="iacal.html" class="nav-link active">
-                    <i class="fas fa-chart-line"></i>
-                    <span>IA Calculator</span>
-                </a>
+            <a href="#" class="logo">College Buddy</a>
+            <button class="menu-button">☰</button>
+            <nav class="nav-links">
+                
+                <a href="cgpa.html" class="nav-link">CGPA Calculator</a>
+                <a href="iacal.html" class="nav-link">IA Calculator</a>
+                
             </nav>
         </div>
     </header>
@@ -255,54 +246,6 @@
                 navLinks.classList.remove('active');
             }
         });
-        // Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Get navigation elements
-    const menuButton = document.querySelector('.menu-button');
-    const navLinks = document.querySelector('.nav-links');
-
-    // Handle menu button click
-    menuButton.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent click from bubbling to document
-        navLinks.classList.toggle('active');
-        const isExpanded = navLinks.classList.contains('active');
-        menuButton.setAttribute('aria-expanded', isExpanded);
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (navLinks.classList.contains('active') && 
-            !e.target.closest('.nav-links') && 
-            !e.target.closest('.menu-button')) {
-            navLinks.classList.remove('active');
-            menuButton.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Handle active link
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinksElements = document.querySelectorAll('.nav-link');
-    
-    navLinksElements.forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-
-    // Close menu on window resize (if switching to desktop view)
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            if (window.innerWidth > 768) {
-                navLinks.classList.remove('active');
-                menuButton.setAttribute('aria-expanded', 'false');
-            }
-        }, 250);
-    });
-});
     </script>
 </body>
 </html>
