@@ -339,15 +339,16 @@ button:active {
 }
 
 /* Mobile Responsive Styles */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     body {
         padding: 0;
         padding-top: 60px;
     }
 
     .container {
-        margin: 1.5rem;
-        padding: 1.5rem;
+        margin: 1rem;
+        padding: 1.25rem;
+        margin-top: 60px; /* Ensure space between container and navigation */
     }
 
     .menu-button {
@@ -363,21 +364,19 @@ button:active {
         background-color: #111;
         flex-direction: column;
         padding: 1rem;
-        border-top: 1px solid #222;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .nav-links.active {
         display: flex;
+        animation: slideDown 0.3s ease forwards;
     }
 
     .nav-link {
         width: 100%;
         padding: 1rem;
     }
-    .container {
-        margin: 1rem;
-        padding: 1.25rem;
-    }
+    
     .input-grid {
         grid-template-columns: 1fr;
     }
