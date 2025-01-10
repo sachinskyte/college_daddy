@@ -1,4 +1,3 @@
-
 function toggleResultsTable() {
     const table = document.getElementById('results-table');
     const isChecked = document.getElementById('toggleTable').checked;
@@ -6,9 +5,9 @@ function toggleResultsTable() {
 }
 
 function toggleResultsTable() {
-const table = document.getElementById('gradeTable');
-const isChecked = document.getElementById('toggleTable').checked;
-table.style.display = isChecked ? 'table' : 'none';
+    const table = document.getElementById('gradeTable');
+    const isChecked = document.getElementById('toggleTable').checked;
+    table.style.display = isChecked ? 'table' : 'none';
 }
 
 const gradeScale = [
@@ -21,17 +20,26 @@ const gradeScale = [
     { grade: 'F', points: 0, minMarks: 0 }
 ];
 
+function getInputValue(id) {
+    const input = document.getElementById(id);
+    if (!input.value.trim()) {
+        input.value = '';
+        return 0;
+    }
+    return parseFloat(input.value) || 0;
+}
+
 function calculateMarks() {
     // Get input values
-    const series1 = parseFloat(document.getElementById('series1').value) || 0;
-    const series2 = parseFloat(document.getElementById('series2').value) || 0;
-    const series3 = parseFloat(document.getElementById('series3').value) || 0;
-    const assignment1 = parseFloat(document.getElementById('assignment1').value) || 0;
-    const assignment2 = parseFloat(document.getElementById('assignment2').value) || 0;
-    const module1 = parseFloat(document.getElementById('module1').value) || 0;
-    const module2 = parseFloat(document.getElementById('module2').value) || 0;
-    const module3 = parseFloat(document.getElementById('module3').value) || 0;
-    const graceMarks = parseFloat(document.getElementById('graceMarks').value) || 0;
+    const series1 = getInputValue('series1');
+    const series2 = getInputValue('series2');
+    const series3 = getInputValue('series3');
+    const assignment1 = getInputValue('assignment1');
+    const assignment2 = getInputValue('assignment2');
+    const module1 = getInputValue('module1');
+    const module2 = getInputValue('module2');
+    const module3 = getInputValue('module3');
+    const graceMarks = getInputValue('graceMarks');
 
     // Calculate scaled marks
     const seriesAvg = (series1 + series2 + series3) / 3;
@@ -88,6 +96,18 @@ function calculateRequiredSEE(internalMarks) {
     });
 }
 
+// Initialize input handling
+function initializeInputs() {
+    const inputs = document.querySelectorAll('input[type="number"]');
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            if (!this.value.trim()) {
+                this.value = '';
+            }
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.querySelector('.menu-button');
     const navLinks = document.querySelector('.nav-links');
@@ -97,4 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const isExpanded = navLinks.classList.contains('active');
         menuButton.setAttribute('aria-expanded', isExpanded);
     });
+
+    // Initialize input handling
+    initializeInputs();
 });

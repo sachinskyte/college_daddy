@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Final Marks Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Marks Calculator | College Buddy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="code\css\ia.css">
 </head>
 <body>
-    <header>
+     <header>
         <div class="nav-container">
             <a href="index.html" class="logo" aria-label="College Buddy Home">
                 <i class="fas fa-graduation-cap"></i>
-                College Buddy
+                <span>College Buddy</span>
             </a>
             <button class="menu-button" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="nav-links" aria-label="Main navigation">
-                <a href="COLLEGE_BUDDY/index.html" class="nav-link">
+                <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a>
-                <a href="cgpa.html" class="nav-link ">
+                <a href="cgpa.html" class="nav-link">
                     <i class="fas fa-calculator"></i>
                     <span>CGPA Calculator</span>
                 </a>
@@ -33,107 +34,116 @@
             </nav>
         </div>
     </header>
-    
-    <div class="container">
+
+    <main class="container">
         <div class="header">
             <h1>
-                <i class="fas fa-calculator"></i> Final Marks Calculator
+                <i class="fas fa-calculator"></i>
+                <span>Final Marks Calculator</span>
             </h1>
             <p>Calculate your total marks and SEE exam eligibility</p>
         </div>
 
-        <div class="section">
-            <div class="section-title">
-                <i class="fas fa-book"></i> Series Exams
-                <div class="tooltip">
-                    <i class="fas fa-info-circle"></i>
-                    <span class="tooltip-text">Each exam is out of 50 marks</span>
+        <form id="marksForm" onsubmit="event.preventDefault(); calculateMarks();">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-book"></i>
+                    <span>Series Exams</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Each exam is out of 50 marks</span>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="series1">Series Exam 1</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="series1" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="series2">Series Exam 2</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="series2" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="series3">Series Exam 3</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="series3" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
                 </div>
             </div>
-            <div class="input-grid">
-                <div class="input-group">
-                    <label>Series Exam 1</label>
-                    <span class="max-marks">/50</span>
-                    <input type="number" id="series1" min="0" max="50" step="0.5" placeholder="Enter marks">
-                </div>
-                <div class="input-group">
-                    <label>Series Exam 2</label>
-                    <span class="max-marks">/50</span>
-                    <input type="number" id="series2" min="0" max="50" step="0.5" placeholder="Enter marks">
-                </div>
-                <div class="input-group">
-                    <label>Series Exam 3</label>
-                    <span class="max-marks">/50</span>
-                    <input type="number" id="series3" min="0" max="50" step="0.5" placeholder="Enter marks">
-                </div>
-            </div>
-        </div>
 
-        <div class="section">
-            <div class="section-title">
-                <i class="fas fa-tasks"></i> Assignments
-                <div class="tooltip">
-                    <i class="fas fa-info-circle"></i>
-                    <span class="tooltip-text">Each assignment is out of 10 marks</span>
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assignments</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Each assignment is out of 10 marks</span>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="assignment1">Assignment 1</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="assignment1" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="assignment2">Assignment 2</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="assignment2" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
                 </div>
             </div>
-            <div class="input-grid">
-                <div class="input-group">
-                    <label>Assignment 1</label>
-                    <span class="max-marks">/10</span>
-                    <input type="number" id="assignment1" min="0" max="10" step="0.5" placeholder="Enter marks">
-                </div>
-                <div class="input-group">
-                    <label>Assignment 2</label>
-                    <span class="max-marks">/10</span>
-                    <input type="number" id="assignment2" min="0" max="10" step="0.5" placeholder="Enter marks">
-                </div>
-            </div>
-        </div>
 
-        <div class="section">
-            <div class="section-title">
-                <i class="fas fa-clipboard-check"></i> Module Tests
-                <div class="tooltip">
-                    <i class="fas fa-info-circle"></i>
-                    <span class="tooltip-text">Each test is out of 10 marks</span>
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Module Tests</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Each test is out of 10 marks</span>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="module1">Module Test 1</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="module1" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="module2">Module Test 2</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="module2" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="module3">Module Test 3</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="module3" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
                 </div>
             </div>
-            <div class="input-grid">
-                <div class="input-group">
-                    <label>Module Test 1</label>
-                    <span class="max-marks">/10</span>
-                    <input type="number" id="module1" min="0" max="10" step="0.5" placeholder="Enter marks">
-                </div>
-                <div class="input-group">
-                    <label>Module Test 2</label>
-                    <span class="max-marks">/10</span>
-                    <input type="number" id="module2" min="0" max="10" step="0.5" placeholder="Enter marks">
-                </div>
-                <div class="input-group">
-                    <label>Module Test 3</label>
-                    <span class="max-marks">/10</span>
-                    <input type="number" id="module3" min="0" max="10" step="0.5" placeholder="Enter marks">
-                </div>
-            </div>
-        </div>
 
-        <div class="section">
-            <div class="section-title">
-                <i class="fas fa-star"></i> Grace Marks
-                <div class="tooltip">
-                    <i class="fas fa-info-circle"></i>
-                    <span class="tooltip-text">Additional bonus marks (if any)</span>
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-star"></i>
+                    <span>Grace Marks</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Additional bonus marks (if any)</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="graceMarks">Grace Marks</label>
+                    <input type="number" id="graceMarks" min="0" max="10" step="0.5" placeholder="Enter grace marks (if any)">
                 </div>
             </div>
-            <div class="input-group">
-                <input type="number" id="graceMarks" min="0" max="10" step="0.5" placeholder="Enter grace marks (if any)">
-            </div>
-        </div>
 
-        <button onclick="calculateMarks()">
-            <i class="fas fa-calculator"></i> Calculate Final Marks
-        </button>
+            <button type="submit">
+                <i class="fas fa-calculator"></i>
+                <span>Calculate Final Marks</span>
+            </button>
+        </form>
 
         <div id="results" class="result-section">
             <div class="result-item">
@@ -156,25 +166,22 @@
                 <span class="result-label">Total Marks</span>
                 <span class="result-value" id="totalMarks">0/50</span>
             </div>
-            <div id="eligibility" class="eligibility"></div>
             
-        <div id="eligibility" class="eligibility"></div>
+            <div id="eligibility" class="eligibility"></div>
 
-        <table id="gradeTable" class="grade-table">
-            <thead>
-                <tr>
-                    <th>Grade</th>
-                    <th>Points</th>
-                    <th>Required SEE Marks</th>
-                </tr>
-            </thead>
-            <tbody id="gradeTableBody"></tbody>
-        </table>
-    </div>
-</div>
-    
+            <table id="gradeTable" class="grade-table">
+                <thead>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Points</th>
+                        <th>Required SEE Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="gradeTableBody"></tbody>
+            </table>
         </div>
-    </div>
+    </main>
 
-   <script src="code\scripts\ia.js"></script>
-</body></html>
+    <script src="code/scripts/ia.js"></script>
+</body>
+</html>
