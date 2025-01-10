@@ -1,32 +1,74 @@
-
 let progressChart = null;
 let semesterChart = null;
 
-// Initialize tooltips
-document.querySelectorAll('.tooltip i').forEach(tooltip => {
-    tooltip.addEventListener('mouseenter', (e) => {
-        const title = e.target.getAttribute('title');
-        const tooltipDiv = document.createElement('div');
-        tooltipDiv.className = 'absolute bg-gray-800 text-white p-2 rounded text-sm z-10 -mt-12 -ml-2';
-        tooltipDiv.style.whiteSpace = 'nowrap';
-        tooltipDiv.textContent = title;
-        e.target.parentNode.appendChild(tooltipDiv);
-        e.target.removeAttribute('title');
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize mobile menu
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
 
-    tooltip.addEventListener('mouseleave', (e) => {
-        const tooltipDiv = e.target.parentNode.querySelector('div');
-        if (tooltipDiv) {
-            e.target.setAttribute('title', tooltipDiv.textContent);
-            tooltipDiv.remove();
-        }
+    if (menuButton && navLinks) {
+        menuButton.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-container')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Close menu when window is resized
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+
+    // Initialize tooltips
+    document.querySelectorAll('.tooltip i').forEach(tooltip => {
+        const title = tooltip.getAttribute('title');
+        
+        tooltip.addEventListener('mouseenter', (e) => {
+            const tooltipDiv = document.createElement('div');
+            tooltipDiv.className = 'tooltip-content';
+            tooltipDiv.style.cssText = `
+                position: absolute;
+                background: var(--bg-darker);
+                color: var(--text-light);
+                padding: 0.75rem 1rem;
+                border-radius: 6px;
+                font-size: 0.875rem;
+                white-space: nowrap;
+                z-index: 1000;
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            `;
+            tooltipDiv.textContent = title;
+            tooltip.parentNode.appendChild(tooltipDiv);
+            tooltip.removeAttribute('title');
+        });
+
+        tooltip.addEventListener('mouseleave', (e) => {
+            const tooltipDiv = e.target.parentNode.querySelector('.tooltip-content');
+            if (tooltipDiv) {
+                tooltip.setAttribute('title', tooltipDiv.textContent);
+                tooltipDiv.remove();
+            }
+        });
     });
 });
 
 function calculate() {
     // Reset previous results
-    document.getElementById('error').style.display = 'none';
-    document.getElementById('result').style.display = 'none';
+    const errorDiv = document.getElementById('error');
+    const resultDiv = document.getElementById('result');
+    
+    errorDiv.style.display = 'none';
+    resultDiv.style.display = 'none';
     
     // Get input values
     const currentCGPA = parseFloat(document.getElementById('currentCGPA').value);
@@ -34,8 +76,8 @@ function calculate() {
     const targetCGPA = parseFloat(document.getElementById('targetCGPA').value);
     
     // Validate inputs
-    if (!currentCGPA || !completedSem || !targetCGPA) {
-        showError('Please fill in all fields');
+    if (isNaN(currentCGPA) || isNaN(completedSem) || isNaN(targetCGPA)) {
+        showError('Please fill in all fields with valid numbers');
         return;
     }
     
@@ -62,7 +104,7 @@ function calculate() {
     // Display results
     document.getElementById('requiredCGPA').textContent = requiredCGPA.toFixed(2);
     document.getElementById('remainingSem').textContent = remainingSem;
-    document.getElementById('result').style.display = 'block';
+    resultDiv.style.display = 'block';
     
     // Update charts
     updateCharts(currentCGPA, completedSem, targetCGPA, requiredCGPA, remainingSem);
@@ -72,120 +114,105 @@ function showError(message) {
     const errorDiv = document.getElementById('error');
     errorDiv.textContent = message;
     errorDiv.style.display = 'block';
+    errorDiv.style.backgroundColor = 'rgba(255, 68, 68, 0.1)';
+    errorDiv.style.color = 'var(--error-color)';
+    errorDiv.style.padding = '1rem';
+    errorDiv.style.borderRadius = '8px';
+    errorDiv.style.marginTop = '1rem';
 }
 
 function updateCharts(currentCGPA, completedSem, targetCGPA, requiredCGPA, remainingSem) {
-    // Progress Chart
-    const ctxProgress = document.getElementById('progressChart').getContext('2d');
-    if (progressChart) progressChart.destroy();
-
-    progressChart = new Chart(ctxProgress, {
-        type: 'line',
-        data: {
-            labels: ['Current', 'Target'],
-            datasets: [{
-                label: 'CGPA Progress',
-                data: [currentCGPA, targetCGPA],
-                borderColor: '#00ff88',
-                backgroundColor: 'rgba(0, 255, 136, 0.1)',
-                fill: true,
-                tension: 0.4
-            }]
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: { color: '#fff' }
+            }
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'CGPA Progress Trajectory',
-                    color: '#fff'
-                },
-                legend: {
-                    labels: { color: '#fff' }
-                }
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 10,
+                grid: { color: '#333' },
+                ticks: { color: '#fff' }
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 10,
-                    grid: { color: '#333' },
-                    ticks: { color: '#fff' }
-                },
-                x: {
-                    grid: { color: '#333' },
-                    ticks: { color: '#fff' }
-                }
+            x: {
+                grid: { color: '#333' },
+                ticks: { color: '#fff' }
             }
         }
-    });
+    };
+
+    // Progress Chart
+    const ctxProgress = document.getElementById('progressChart');
+    if (progressChart) {
+        progressChart.destroy();
+    }
+    
+    if (ctxProgress) {
+        progressChart = new Chart(ctxProgress.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['Current', 'Target'],
+                datasets: [{
+                    label: 'CGPA Progress',
+                    data: [currentCGPA, targetCGPA],
+                    borderColor: '#00ff88',
+                    backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'CGPA Progress Trajectory',
+                        color: '#fff'
+                    }
+                }
+            }
+        });
+    }
 
     // Semester Chart
-    const ctxSemester = document.getElementById('semesterChart').getContext('2d');
-    if (semesterChart) semesterChart.destroy();
-
-    const semesterLabels = Array.from({ length: remainingSem }, (_, i) => `Sem ${completedSem + i + 1}`);
-    const requiredCGPAs = Array(remainingSem).fill(requiredCGPA);
-
-    semesterChart = new Chart(ctxSemester, {
-        type: 'bar',
-        data: {
-            labels: semesterLabels,
-            datasets: [{
-                label: 'Required CGPA',
-                data: requiredCGPAs,
-                backgroundColor: '#009dff',
-                borderColor: '#0088cc',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Required CGPA per Semester',
-                    color: '#fff'
-                },
-                legend: {
-                    labels: { color: '#fff' }
-                }
+    const ctxSemester = document.getElementById('semesterChart');
+    if (semesterChart) {
+        semesterChart.destroy();
+    }
+    
+    if (ctxSemester) {
+        const semesterLabels = Array.from(
+            { length: remainingSem },
+            (_, i) => `Sem ${completedSem + i + 1}`
+        );
+        
+        semesterChart = new Chart(ctxSemester.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: semesterLabels,
+                datasets: [{
+                    label: 'Required CGPA',
+                    data: Array(remainingSem).fill(requiredCGPA),
+                    backgroundColor: '#009dff',
+                    borderColor: '#0088cc',
+                    borderWidth: 1
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 10,
-                    grid: { color: '#333' },
-                    ticks: { color: '#fff' }
-                },
-                x: {
-                    grid: { color: '#333' },
-                    ticks: { color: '#fff' }
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Required CGPA per Semester',
+                        color: '#fff'
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 }
-document.addEventListener('DOMContentLoaded', function() {
-    const menuButton = document.querySelector('.menu-button');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuButton.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.nav-container')) {
-            navLinks.classList.remove('active');
-        }
-    });
-
-    // Close menu when window is resized to desktop size
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            navLinks.classList.remove('active');
-        }
-    });
-});
