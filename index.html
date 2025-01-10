@@ -25,6 +25,15 @@
             color: var(--text-light);
             min-height: 100vh;
         }
+        .logo {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
         header {
             background-color: var(--bg-darker);
@@ -183,10 +192,14 @@
 <body>
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">College Buddy</a>
+            <a href="index.html" class="logo" aria-label="College Buddy Home">
+                <i class="fas fa-graduation-cap"></i>
+                College Buddy
+            </a>
+            
             <button class="menu-button">☰</button>
             <nav class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
+                
                 <a href="cgpa.html" class="nav-link">CGPA Calculator</a>
                 <a href="iacal.html" class="nav-link">IA Calculator</a>
                 
