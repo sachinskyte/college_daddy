@@ -339,7 +339,7 @@ button:active {
 }
 
 /* Mobile Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     body {
         padding: 0;
         padding-top: 60px;
