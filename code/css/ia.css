@@ -374,7 +374,10 @@ button:active {
         width: 100%;
         padding: 1rem;
     }
-
+    .container {
+        margin: 1rem;
+        padding: 1.25rem;
+    }
     .input-grid {
         grid-template-columns: 1fr;
     }
