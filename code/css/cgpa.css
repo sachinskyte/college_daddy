@@ -31,43 +31,34 @@ body {
     line-height: 1.6;
 }
 
-/* Header and Navigation */
+* Header and Navigation */
 header {
-    background-color: var(--bg-darker);
-    padding: 1rem;
-    position: sticky;
+    background-color: #111;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid #222;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
-    color: var(--primary-color);
+    color: #009dff;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.menu-button {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
 }
 
 .nav-links {
@@ -77,24 +68,33 @@ header {
 }
 
 .nav-link {
-    color: var(--text-light);
+    color: #fff;
     text-decoration: none;
-    padding: 0.75rem 1.25rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .nav-link:hover {
     background-color: rgba(0, 157, 255, 0.1);
-    color: var(--primary-color);
 }
 
 .nav-link.active {
-    background-color: var(--primary-color);
-    color: var(--text-light);
+    background-color: #009dff;
+    color: white;
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
 /* Main container */
