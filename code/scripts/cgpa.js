@@ -1,52 +1,182 @@
+// Chart variables
 let progressChart = null;
 let semesterChart = null;
 
+// Company data
+const companyTiers = {
+    'S+': { minCGPA: 8.0, companies: [], ctc: '₹30+ LPA' },
+    'A+': { minCGPA: 7.5, companies: [], ctc: '₹20-30 LPA' },
+    'A': { minCGPA: 7.5, companies: [], ctc: '₹10-20 LPA' },
+    'B': { minCGPA: 7.0, companies: [], ctc: '₹5-10 LPA' },
+    'C': { minCGPA: 6.0, companies: [], ctc: 'Below ₹5 LPA' }
+};
+
+ const companyData = [
+    // S+ Tier Companies (₹30+ LPA)
+    { name: 'McKinsey & Company', tier: 'S+', cgpa: 8.0 },
+    { name: 'Boston Consulting Group', tier: 'S+', cgpa: 8.0 },
+    { name: 'Bain & Company', tier: 'S+', cgpa: 8.0 },
+    { name: 'Goldman Sachs', tier: 'S+', cgpa: 8.0 },
+    { name: 'Morgan Stanley', tier: 'S+', cgpa: 8.0 },
+    { name: 'Tower Research Capital', tier: 'S+', cgpa: 8.0 },
+    { name: 'Jane Street', tier: 'S+', cgpa: 8.0 },
+    { name: 'Google', tier: 'S+', cgpa: 8.0 },
+    { name: 'Facebook', tier: 'S+', cgpa: 8.0 },
+    { name: 'Apple', tier: 'S+', cgpa: 8.0 },
+    { name: 'Microsoft', tier: 'S+', cgpa: 7.5 },
+    { name: 'Amazon (for select roles)', tier: 'S+', cgpa: 7.5 },
+    { name: 'Uber (for select roles)', tier: 'S+', cgpa: 7.5 },
+    { name: 'LinkedIn', tier: 'S+', cgpa: 8.0 },
+    { name: 'DE Shaw & Co.', tier: 'S+', cgpa: 8.0 },
+    { name: 'WorldQuant', tier: 'S+', cgpa: 8.0 },
+    { name: 'BlackRock', tier: 'S+', cgpa: 7.5 },
+    
+    // A+ Tier Companies (₹20-30 LPA)
+    { name: 'Adobe', tier: 'A+', cgpa: 7.5 },
+    { name: 'Oracle', tier: 'A+', cgpa: 7.5 },
+    { name: 'SAP Labs', tier: 'A+', cgpa: 7.5 },
+    { name: 'Cisco Systems', tier: 'A+', cgpa: 7.5 },
+    { name: 'Qualcomm', tier: 'A+', cgpa: 7.5 },
+    { name: 'Intel', tier: 'A+', cgpa: 7.5 },
+    { name: 'Samsung R&D', tier: 'A+', cgpa: 7.5 },
+    { name: 'Flipkart', tier: 'A+', cgpa: 7.5 },
+    { name: 'Myntra', tier: 'A+', cgpa: 7.5 },
+    { name: 'Ola Cabs', tier: 'A+', cgpa: 7.5 },
+    { name: 'Paytm', tier: 'A+', cgpa: 7.5 },
+    { name: 'Zomato', tier: 'A+', cgpa: 7.5 },
+    { name: 'Swiggy', tier: 'A+', cgpa: 7.5 },
+    { name: 'Infosys (for select roles)', tier: 'A+', cgpa: 7.5 },
+    { name: 'Wipro (for select roles)', tier: 'A+', cgpa: 7.5 },
+    { name: 'Tata Consultancy Services (for select roles)', tier: 'A+', cgpa: 7.5 },
+    { name: 'Reliance Industries (for select roles)', tier: 'A+', cgpa: 7.5 },
+
+    // A Tier Companies (₹10-20 LPA)
+    { name: 'IBM India', tier: 'A', cgpa: 7.5 },
+    { name: 'HCL Technologies', tier: 'A', cgpa: 7.5 },
+    { name: 'Tech Mahindra', tier: 'A', cgpa: 7.5 },
+    { name: 'Cognizant', tier: 'A', cgpa: 7.5 },
+    { name: 'Capgemini', tier: 'A', cgpa: 7.5 },
+    { name: 'Mindtree', tier: 'A', cgpa: 7.0 },
+    { name: 'Mphasis', tier: 'A', cgpa: 7.0 },
+    { name: 'Hexaware Technologies', tier: 'A', cgpa: 7.0 },
+    { name: 'Birlasoft', tier: 'A', cgpa: 7.0 },
+    { name: 'Cyient', tier: 'A', cgpa: 7.0 },
+    { name: 'KPIT Technologies', tier: 'A', cgpa: 7.0 },
+    { name: 'L&T Infotech', tier: 'A', cgpa: 7.5 },
+    { name: 'Sonata Software', tier: 'A', cgpa: 7.0 },
+    { name: 'Sasken Technologies', tier: 'A', cgpa: 7.0 },
+    
+    // B Tier Companies (₹5-10 LPA)
+    { name: 'Small startups or entry-level roles in various industries', tier: 'B', cgpa: 6.0 },
+    { name: 'ABC Tech Solutions', tier: 'B', cgpa: 6.0 },
+    { name: 'XYZ Innovations', tier: 'B', cgpa: 6.0 },
+    { name: 'PQR Software', tier: 'B', cgpa: 6.0 },
+    { name: 'Startup A', tier: 'B', cgpa: 6.0 },
+    { name: 'Tech Co.', tier: 'B', cgpa: 6.0 },
+    { name: 'Data Systems', tier: 'B', cgpa: 6.0 },
+    { name: 'Future Tech', tier: 'B', cgpa: 6.0 },
+    { name: 'Innovate Solutions', tier: 'B', cgpa: 6.0 },
+    { name: 'Creative Labs', tier: 'B', cgpa: 6.0 },
+    { name: 'WNS Global Services', tier: 'B', cgpa: 7.5 },
+    { name: 'EXL Service', tier: 'B', cgpa: 7.5 },
+    { name: 'Genpact', tier: 'B', cgpa: 7.5 },
+    { name: 'Hinduja Global Solutions', tier: 'B', cgpa: 7.5 },
+
+    // C Tier Companies (Below ₹5 LPA)
+    { name: 'Firstsource Solutions', tier: 'C', cgpa: 6.0 },
+    { name: 'Concentrix', tier: 'C', cgpa: 6.0 },
+    { name: 'Sutherland Global Services', tier: 'C', cgpa: 6.0 },
+    { name: 'Teleperformance', tier: 'C', cgpa: 6.0 },
+    { name: 'Infosys BPM', tier: 'C', cgpa: 6.0 },
+    { name: 'Wipro BPS', tier: 'C', cgpa: 6.0 },
+    { name: 'TCS BPS', tier: 'C', cgpa: 6.0 },
+    { name: 'HGS', tier: 'C', cgpa: 6.0 },
+    { name: 'Tech Mahindra BPS', tier: 'C', cgpa: 6.0 },
+    { name: 'Accenture Operations', tier: 'C', cgpa: 6.0 },
+    { name: 'Capgemini BPO', tier: 'C', cgpa: 6.0 },
+    { name: 'Genpact Headstrong', tier: 'C', cgpa: 6.0 },
+    { name: 'IBM Global Process Services', tier: 'C', cgpa: 6.0 },
+    { name: 'Cognizant BPS', tier: 'C', cgpa: 6.0 },
+    { name: 'Dell International Services', tier: 'C', cgpa: 6.0 },
+    { name: 'Wipro Technologies', tier: 'C', cgpa: 6.0 },
+    { name: 'Tata Elxsi', tier: 'C', cgpa: 6.0 },
+    { name: 'Sasken Communication Technologies', tier: 'C', cgpa: 6.0 },
+    { name: 'Mphasis Limited', tier: 'C', cgpa: 6.0 },
+    { name: 'Oracle Financial Services Software', tier: 'C', cgpa: 6.0 },
+    { name: 'Siemens Information Systems', tier: 'C', cgpa: 6.0 },
+    { name: 'Robert Bosch Engineering', tier: 'C', cgpa: 6.0 },
+    { name: 'Honeywell Technology Solutions', tier: 'C', cgpa: 6.0 },
+    { name: 'GE India Technology Centre', tier: 'C', cgpa: 6.0 }
+];
+
+
+// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize mobile menu
+    // Hide all result sections initially
+    hideAllSections();
+    
+    // Initialize data and event listeners
+    initializeAll();
+    
+    // Add calculate button event listener
+    const calculateBtn = document.getElementById('calculateBtn');
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', calculate);
+    }
+});
+
+function hideAllSections() {
+    const sectionsToHide = [
+        'result',
+        'charts-section',
+        'company-eligibility',
+        'error'
+    ];
+    
+    sectionsToHide.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
+}
+
+function initializeAll() {
+    initializeMobileMenu();
+    initializeTooltips();
+    initializeCompanyData();
+}
+
+function initializeMobileMenu() {
     const menuButton = document.querySelector('.menu-button');
     const navLinks = document.querySelector('.nav-links');
 
     if (menuButton && navLinks) {
-        menuButton.addEventListener('click', function() {
+        menuButton.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', (event) => {
             if (!event.target.closest('.nav-container')) {
                 navLinks.classList.remove('active');
             }
         });
 
-        // Close menu when window is resized
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 navLinks.classList.remove('active');
             }
         });
     }
+}
 
-    // Initialize tooltips
+function initializeTooltips() {
     document.querySelectorAll('.tooltip i').forEach(tooltip => {
         const title = tooltip.getAttribute('title');
         
         tooltip.addEventListener('mouseenter', (e) => {
             const tooltipDiv = document.createElement('div');
             tooltipDiv.className = 'tooltip-content';
-            tooltipDiv.style.cssText = `
-                position: absolute;
-                background: var(--bg-darker);
-                color: var(--text-light);
-                padding: 0.75rem 1rem;
-                border-radius: 6px;
-                font-size: 0.875rem;
-                white-space: nowrap;
-                z-index: 1000;
-                top: -40px;
-                left: 50%;
-                transform: translateX(-50%);
-                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            `;
             tooltipDiv.textContent = title;
             tooltip.parentNode.appendChild(tooltipDiv);
             tooltip.removeAttribute('title');
@@ -60,15 +190,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
+}
+
+function initializeCompanyData() {
+    companyData.forEach(company => {
+        companyTiers[company.tier].companies.push(company);
+    });
+}
 
 function calculate() {
-    // Reset previous results
-    const errorDiv = document.getElementById('error');
-    const resultDiv = document.getElementById('result');
-    
-    errorDiv.style.display = 'none';
-    resultDiv.style.display = 'none';
+    // Reset display
+    hideAllSections();
     
     // Get input values
     const currentCGPA = parseFloat(document.getElementById('currentCGPA').value);
@@ -76,24 +208,13 @@ function calculate() {
     const targetCGPA = parseFloat(document.getElementById('targetCGPA').value);
     
     // Validate inputs
-    if (isNaN(currentCGPA) || isNaN(completedSem) || isNaN(targetCGPA)) {
-        showError('Please fill in all fields with valid numbers');
+    if (!validateInputs(currentCGPA, completedSem, targetCGPA)) {
         return;
     }
     
-    if (currentCGPA < 0 || currentCGPA > 10 || targetCGPA < 0 || targetCGPA > 10) {
-        showError('CGPA must be between 0 and 10');
-        return;
-    }
-    
-    if (completedSem < 1 || completedSem >= 8) {
-        showError('Completed semesters must be between 1 and 7');
-        return;
-    }
-    
-    // Calculate
+    // Calculate CGPA requirements
     const remainingSem = 8 - completedSem;
-    const requiredCGPA = ((targetCGPA * 8) - (currentCGPA * completedSem)) / remainingSem;
+    const requiredCGPA = calculateRequiredCGPA(currentCGPA, completedSem, targetCGPA, remainingSem);
     
     if (requiredCGPA > 10) {
         const maxPossible = ((currentCGPA * completedSem + 10 * remainingSem) / 8).toFixed(2);
@@ -101,27 +222,92 @@ function calculate() {
         return;
     }
     
-    // Display results
+    // Show and update all sections
+    showResults(requiredCGPA, remainingSem, currentCGPA);
+}
+
+function validateInputs(currentCGPA, completedSem, targetCGPA) {
+    if (isNaN(currentCGPA) || isNaN(completedSem) || isNaN(targetCGPA)) {
+        showError('Please fill in all fields with valid numbers');
+        return false;
+    }
+    
+    if (currentCGPA < 0 || currentCGPA > 10 || targetCGPA < 0 || targetCGPA > 10) {
+        showError('CGPA must be between 0 and 10');
+        return false;
+    }
+    
+    if (completedSem < 1 || completedSem >= 8) {
+        showError('Completed semesters must be between 1 and 7');
+        return false;
+    }
+    
+    return true;
+}
+
+function calculateRequiredCGPA(currentCGPA, completedSem, targetCGPA, remainingSem) {
+    return ((targetCGPA * 8) - (currentCGPA * completedSem)) / remainingSem;
+}
+
+function showResults(requiredCGPA, remainingSem, currentCGPA) {
+    // Show all result sections
+    const resultDiv = document.getElementById('result');
+    const chartsSection = document.getElementById('charts-section');
+    const companyEligibility = document.getElementById('company-eligibility');
+    
+    if (resultDiv) resultDiv.style.display = 'block';
+    if (chartsSection) chartsSection.style.display = 'block';
+    if (companyEligibility) companyEligibility.style.display = 'block';
+    
+    // Update results
     document.getElementById('requiredCGPA').textContent = requiredCGPA.toFixed(2);
     document.getElementById('remainingSem').textContent = remainingSem;
-    resultDiv.style.display = 'block';
     
-    // Update charts
-    updateCharts(currentCGPA, completedSem, targetCGPA, requiredCGPA, remainingSem);
+    // Update charts and company info
+    updateCharts();
+    updateCompanyEligibility(currentCGPA);
+}
+
+function updateCompanyEligibility(cgpa) {
+    let eligibleCount = 0;
+    const tierCounts = {
+        'S+': 0, 'A+': 0, 'A': 0, 'B': 0, 'C': 0
+    };
+
+    companyData.forEach(company => {
+        if (cgpa >= company.cgpa) {
+            eligibleCount++;
+            tierCounts[company.tier]++;
+        }
+    });
+
+    document.getElementById('eligibleCount').textContent = `${eligibleCount}/${companyData.length}`;
+    document.getElementById('userCGPA').textContent = cgpa.toFixed(2);
+    
+    // Update tier counts
+    Object.keys(tierCounts).forEach(tier => {
+        const element = document.getElementById(`${tier.toLowerCase().replace('+', 'Plus')}Tier`);
+        if (element) {
+            element.textContent = tierCounts[tier];
+        }
+    });
 }
 
 function showError(message) {
     const errorDiv = document.getElementById('error');
-    errorDiv.textContent = message;
-    errorDiv.style.display = 'block';
-    errorDiv.style.backgroundColor = 'rgba(255, 68, 68, 0.1)';
-    errorDiv.style.color = 'var(--error-color)';
-    errorDiv.style.padding = '1rem';
-    errorDiv.style.borderRadius = '8px';
-    errorDiv.style.marginTop = '1rem';
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+    }
 }
 
-function updateCharts(currentCGPA, completedSem, targetCGPA, requiredCGPA, remainingSem) {
+function updateCharts() {
+    const currentCGPA = parseFloat(document.getElementById('currentCGPA').value);
+    const completedSem = parseInt(document.getElementById('completedSem').value);
+    const targetCGPA = parseFloat(document.getElementById('targetCGPA').value);
+    const requiredCGPA = calculateRequiredCGPA(currentCGPA, completedSem, targetCGPA, 8 - completedSem);
+    const remainingSem = 8 - completedSem;
+
     const chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
@@ -144,7 +330,11 @@ function updateCharts(currentCGPA, completedSem, targetCGPA, requiredCGPA, remai
         }
     };
 
-    // Progress Chart
+    updateProgressChart(currentCGPA, targetCGPA, chartOptions);
+    updateSemesterChart(completedSem, remainingSem, requiredCGPA, chartOptions);
+}
+
+function updateProgressChart(currentCGPA, targetCGPA, chartOptions) {
     const ctxProgress = document.getElementById('progressChart');
     if (progressChart) {
         progressChart.destroy();
@@ -177,8 +367,9 @@ function updateCharts(currentCGPA, completedSem, targetCGPA, requiredCGPA, remai
             }
         });
     }
+}
 
-    // Semester Chart
+function updateSemesterChart(completedSem, remainingSem, requiredCGPA, chartOptions) {
     const ctxSemester = document.getElementById('semesterChart');
     if (semesterChart) {
         semesterChart.destroy();
