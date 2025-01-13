@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CGPA Calculator - Calculate your required CGPA with visual charts">
+    <meta name="description" content="CGPA Calculator - Calculate your required CGPA and check company eligibility">
     <title>Enhanced CGPA Calculator</title>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="code\css\cgpa.css">
+    <link rel="stylesheet" type="text/css" href="code/css/cgpa.css">
     
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" defer></script>
-    <script src="code\scripts\cgpa.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="code/scripts/cgpa.js" defer></script>
 </head>
 <body>
     <header>
@@ -34,7 +35,7 @@
                     <i class="fas fa-calculator"></i>
                     <span>CGPA Calculator</span>
                 </a>
-                <a href="iacal.html" class="nav-link ">
+                <a href="iacal.html" class="nav-link">
                     <i class="fas fa-chart-line"></i>
                     <span>IA Calculator</span>
                 </a>
@@ -43,97 +44,150 @@
     </header>
 
     <main class="container">
-        <h1>
-            <i class="fas fa-calculator"></i>
-            Enhanced CGPA Calculator
-        </h1>
-        
-        <form id="cgpaForm" onsubmit="event.preventDefault(); calculate();">
-            <div class="input-group">
-                <label for="currentCGPA">Current CGPA</label>
-                <div class="input-wrapper">
-                    <input 
-                        type="number" 
-                        id="currentCGPA" 
-                        placeholder="Enter current CGPA" 
-                        step="0.01" 
-                        min="0" 
-                        max="10"
-                        required
-                        aria-describedby="currentCGPAHelp"
-                    >
-                    <div class="tooltip">
-                        <i class="fas fa-question-circle" title="Enter your current CGPA (0-10)"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label for="completedSem">Completed Semesters</label>
-                <div class="input-wrapper">
-                    <input 
-                        type="number" 
-                        id="completedSem" 
-                        placeholder="Number of semesters done" 
-                        min="1" 
-                        max="7"
-                        required
-                        aria-describedby="completedSemHelp"
-                    >
-                    <div class="tooltip">
-                        <i class="fas fa-question-circle" title="Enter number of completed semesters (1-7)"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label for="targetCGPA">Target CGPA</label>
-                <div class="input-wrapper">
-                    <input 
-                        type="number" 
-                        id="targetCGPA" 
-                        placeholder="CGPA you want to achieve" 
-                        step="0.01" 
-                        min="0" 
-                        max="10"
-                        required
-                        aria-describedby="targetCGPAHelp"
-                    >
-                    <div class="tooltip">
-                        <i class="fas fa-question-circle" title="Enter your target CGPA (0-10)"></i>
-                    </div>
-                </div>
-            </div>
-
-            <button type="submit" class="calculate-btn">
-                <i class="fas fa-chart-line"></i>
-                Calculate Required CGPA
-            </button>
-        </form>
-        
-        <div id="error" role="alert" aria-live="polite"></div>
-        
-        <div id="result" aria-live="polite">
-            <div class="result-grid">
-                <div class="result-item">
-                    <div class="value" id="requiredCGPA">0.00</div>
-                    <div class="label">Required CGPA per semester</div>
-                </div>
-                <div class="result-item">
-                    <div class="value" id="remainingSem">0</div>
-                    <div class="label">Remaining Semesters</div>
-                </div>
-            </div>
+        <!-- Existing CGPA Calculator Section -->
+        <section id="cgpa-calculator">
+            <h1>
+                <i class="fas fa-calculator"></i>
+                Enhanced CGPA Calculator
+            </h1>
             
-            <div class="charts-container">
-                <div class="chart-wrapper">
-                    <canvas id="progressChart" aria-label="CGPA Progress Chart" role="img"></canvas>
+            <form id="cgpaForm" onsubmit="event.preventDefault(); calculate();">
+                <!-- Existing form inputs -->
+                <div class="input-group">
+                    <label for="currentCGPA">Current CGPA</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="currentCGPA" placeholder="Enter current CGPA" step="0.01" min="0" max="10" required>
+                        <div class="tooltip">
+                            <i class="fas fa-question-circle" title="Enter your current CGPA (0-10)"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="chart-wrapper">
-                    <canvas id="semesterChart" aria-label="Required CGPA per Semester Chart" role="img"></canvas>
+
+                <div class="input-group">
+                    <label for="completedSem">Completed Semesters</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="completedSem" placeholder="Number of semesters done" min="1" max="7" required>
+                        <div class="tooltip">
+                            <i class="fas fa-question-circle" title="Enter number of completed semesters (1-7)"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="targetCGPA">Target CGPA</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="targetCGPA" placeholder="CGPA you want to achieve" step="0.01" min="0" max="10" required>
+                        <div class="tooltip">
+                            <i class="fas fa-question-circle" title="Enter your target CGPA (0-10)"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="calculate-btn">
+                    <i class="fas fa-chart-line"></i>
+                    Calculate Required CGPA
+                </button>
+            </form>
+            
+            <div id="error" role="alert" aria-live="polite"></div>
+            
+            <div id="result" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-item">
+                        <div class="value" id="requiredCGPA">0.00</div>
+                        <div class="label">Required CGPA per semester</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="value" id="remainingSem">0</div>
+                        <div class="label">Remaining Semesters</div>
+                    </div>
+                </div>
+                
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <canvas id="progressChart" aria-label="CGPA Progress Chart" role="img"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="semesterChart" aria-label="Required CGPA per Semester Chart" role="img"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- New Company Eligibility Section -->
+        <section id="company-eligibility" class="eligibility-section">
+            <h2>
+                <i class="fas fa-building"></i>
+                Company Eligibility Checker
+            </h2>
+
+            <div class="tier-info">
+                <h3>CTC Tiers</h3>
+                <div class="tier-grid">
+                    <div class="tier-item">
+                        <h4>S+ Tier</h4>
+                        <p>₹30+ LPA</p>
+                    </div>
+                    <div class="tier-item">
+                        <h4>A+ Tier</h4>
+                        <p>₹20-30 LPA</p>
+                    </div>
+                    <div class="tier-item">
+                        <h4>A Tier</h4>
+                        <p>₹10-20 LPA</p>
+                    </div>
+                    <div class="tier-item">
+                        <h4>B Tier</h4>
+                        <p>₹5-10 LPA</p>
+                    </div>
+                    <div class="tier-item">
+                        <h4>C Tier</h4>
+                        <p>Below ₹5 LPA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="eligibility-results">
+                <div class="result-card">
+                    <h3>Your Eligibility Summary</h3>
+                    <div class="eligibility-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Eligible Companies</span>
+                            <span class="stat-value" id="eligibleCount">0/114</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Your CGPA</span>
+                            <span class="stat-value" id="userCGPA">0.00</span>
+                        </div>
+                    </div>
+                    <div class="tier-distribution">
+                        <h4>Company Tiers Distribution</h4>
+                        <div class="tier-stats">
+                            <div class="tier-stat">
+                                <span>S+</span>
+                                <span id="sPlusTier">0</span>
+                            </div>
+                            <div class="tier-stat">
+                                <span>A+</span>
+                                <span id="aPlusTier">0</span>
+                            </div>
+                            <div class="tier-stat">
+                                <span>A</span>
+                                <span id="aTier">0</span>
+                            </div>
+                            <div class="tier-stat">
+                                <span>B</span>
+                                <span id="bTier">0</span>
+                            </div>
+                            <div class="tier-stat">
+                                <span>C</span>
+                                <span id="cTier">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
