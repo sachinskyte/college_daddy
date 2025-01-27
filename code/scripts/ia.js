@@ -118,7 +118,45 @@ function calculateMarks(event) {
         console.error('Error in calculateMarks:', error);
     }
 }
+function calculateRegularMode() {
+    try {
+        // Get all marks
+        const series1 = getInputValue('series1');
+        const series2 = getInputValue('series2');
+        const series3 = getInputValue('series3');
+        const assignment1 = getInputValue('assignment1');
+        const assignment2 = getInputValue('assignment2');
+        const module1 = getInputValue('module1');
+        const module2 = getInputValue('module2');
+        const module3 = getInputValue('module3');
+        const graceMarks = getInputValue('graceMarks');
 
+        // Calculate scaled marks
+        const seriesAvg = (series1 + series2 + series3) / 3;
+        const scaledSeries = (seriesAvg / 50) * 25;
+        const assignmentTotal = assignment1 + assignment2;
+        const scaledAssignments = (assignmentTotal / 20) * 10;
+        const moduleTotal = module1 + module2 + module3;
+        const scaledModules = (moduleTotal / 30) * 15;
+
+        // Update displays
+        updateScaledMarksDisplay(scaledSeries, scaledAssignments, scaledModules, graceMarks);
+
+        // Calculate total
+        const total = scaledSeries + scaledAssignments + scaledModules + graceMarks;
+        
+        // Update total display
+        const totalMarksElement = document.getElementById('totalMarks');
+        if (totalMarksElement) {
+            totalMarksElement.textContent = `${total.toFixed(2)}/50`;
+        }
+
+        // Check eligibility and display grades
+        checkEligibilityAndDisplayGrades(total, false);
+    } catch (error) {
+        console.error('Error in calculateRegularMode:', error);
+    }
+}
 // Calculate marks in regular mode
 function calculateLabMode() {
     try {
