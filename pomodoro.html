@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Pomodoro Timer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="code\css\pomodoro.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Pomodoro Timer</h1>
+        
+        <!-- Add settings icon -->
+        <div class="settings-icon" id="settings-icon"></div>
+
+        <!-- Modified settings panel -->
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-grid">
+                <div class="settings-group">
+                    <label class="settings-label">Work Duration (minutes)</label>
+                    <input type="number" class="settings-input" id="work-duration" value="25" min="1" max="60">
+                </div>
+                <div class="settings-group">
+                    <label class="settings-label">Short Break (minutes)</label>
+                    <input type="number" class="settings-input" id="short-break" value="5" min="1" max="30">
+                </div>
+                <div class="settings-group">
+                    <label class="settings-label">Long Break (minutes)</label>
+                    <input type="number" class="settings-input" id="long-break" value="15" min="1" max="60">
+                </div>
+                <div class="settings-group">
+                    <label class="settings-label">Pomodoros until Long Break</label>
+                    <input type="number" class="settings-input" id="pomodoros-count" value="4" min="1" max="10">
+                </div>
+            </div>
+            <button class="btn" id="apply-settings">Apply Settings</button>
+        </div>
+
+        <!-- Rest of your HTML remains exactly the same -->
+        <div class="timer-container">
+            <div class="timer-circle">
+                <svg class="progress-ring">
+                    <circle cx="200" cy="200" r="190" stroke-dasharray="1194" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="time-display">25:00</div>
+                <div class="phase-display">Work Time</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" id="start">Start</button>
+            <button class="btn" id="skip">Skip Phase</button>
+            <button class="btn" id="reset">Reset</button>
+        </div>
+
+        <div class="music-section">
+            <h2 class="music-title">Study Music</h2>
+            <div class="music-controls">
+                <input type="text" placeholder="Enter YouTube URL" class="music-input" id="youtube-url">
+                <button class="btn" id="add-youtube">Load Music</button>
+                <div class="volume-control">
+                    <span>Volume:</span>
+                    <input type="range" class="volume-slider" min="0" max="100" value="50">
+                </div>
+            </div>
+            <div class="youtube-container"></div>
+        </div>
+
+        <div class="stats-panel">
+            <h2 class="stats-title">Today's Progress</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="completed-pomodoros">0</div>
+                    <div class="stat-label">Completed Pomodoros</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="total-focus-time">0</div>
+                    <div class="stat-label">Total Focus Time (min)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="current-streak">0</div>
+                    <div class="stat-label">Current Streak</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="code/scripts/pomodoro.js"></script>
+</body>
+</html>
