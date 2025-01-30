@@ -108,6 +108,8 @@ body {
 }
 
 .title {
+    position: relative;
+    top: 2cm;
     font-size: clamp(2rem, 5vw, 3rem);
     text-transform: uppercase;
     letter-spacing: 0.5rem;
@@ -115,19 +117,9 @@ body {
     animation: glow 2s ease-in-out infinite alternate;
 }
 /*-----------circle---------------------------------------------------------------------*/
-@keyframes glow {
-    from { 
-        text-shadow: 0 0 10px var(--primary-color),
-                     0 0 20px var(--primary-color);
-    }
-    to { 
-        text-shadow: 0 0 20px var(--primary-color),
-                     0 0 30px var(--primary-color),
-                     0 0 40px var(--primary-color);
-    }
-}
-
 .timer-container {
+    position: relative;
+    top: 2cm;
     position: relative;
     width: min(80vw, 600px);
     height: min(80vw, 600px);
@@ -171,24 +163,25 @@ body {
 
 .progress-ring {
     position: absolute;
-    width: 800px;
-    height: 600px;
-    transform: rotate(-90deg);
+    top: 50%;
+    left: 50%;
+    width: 95%;
+    height: 95%;
+    transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 .progress-ring circle {
     fill: none;
     stroke: var(--primary-color);
-    stroke-width: 10;
+    stroke-width: 8;
     stroke-linecap: round;
     filter: drop-shadow(0 0 10px var(--primary-color));
     transition: stroke-dashoffset 0.3s ease-in-out, stroke-width 0.3s ease;
 }
 
 .progress-ring circle:hover {
-    stroke-width: 12;
+    stroke-width: 10;
 }
-
 
 .time-display {
     font-size: clamp(3rem, 10vw, 8rem);
@@ -265,6 +258,8 @@ body {
 }
 
 .controls {
+    position: relative;
+    top: 2cm;
     display: flex;
     gap: 1rem;
     margin: 2rem 0;
@@ -302,7 +297,11 @@ body {
     background: var(--accent-color);
     border-radius: 10px;
     padding: 2rem;
+    position: relative;
+    top: 4cm; /* Moves it down exactly 4cm */
 }
+
+
 
 .music-title {
     font-size: 1.5rem;
@@ -377,6 +376,8 @@ body {
     border-radius: 10px;
     padding: 2rem;
     margin-top: 2rem;
+    position: relative;
+    top: 4cm;
 }
 
 .stats-title {
@@ -463,9 +464,7 @@ body {
         --accent-color: rgba(0, 179, 255, 0.1);
     }
 
-    /* All existing styles remain exactly the same until settings panel */
-
-    /* Modified/New Settings Panel Styles */
+    
     .settings-icon {
         position: fixed;
         top: 20px;
@@ -512,5 +511,5 @@ body {
         transform: translateX(0);
     }
 
-    /* Rest of your existing styles remain exactly the same */
+  
  
