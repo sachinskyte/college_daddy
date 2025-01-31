@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Enhanced Pomodoro Timer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <link rel="stylesheet" type="text/css" href="code\css\pomodoro.css">
@@ -22,20 +22,19 @@
                 <nav class="nav-links">
                     <a href="cgpa.html" class="nav-link">CGPA Calculator</a>
                     <a href="iacal.html" class="nav-link">IA Calculator</a>
-                    <a href="pomodoro.html" class="nav-link">Study timer</a>
                 </nav>
             </div>
         </header>
 
         <!-- Settings and Fullscreen Controls Container -->
-        <div style="position: fixed; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 1000;">
+        <div style="position: fixed; top: 80px; left: 20px; display: flex; gap: 10px; z-index: 1000;">
             <!-- Settings Icon -->
             <div class="settings-icon" id="settings-icon" style="cursor: pointer;"></div>
             
             <!-- Fullscreen Button -->
             <button id="fullscreenBtn" style="
-                padding: 8px 16px;
-                background-color: #2196F3;
+                padding: 8px 8px;
+                background-color: #000000;
                 color: white;
                 border: none;
                 border-radius: 5px;
@@ -51,7 +50,7 @@
                 <svg id="fullscreenIcon" style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
                 </svg>
-                <span>Fullscreen</span>
+                <span></span>
             </button>
         </div>
 

@@ -45,6 +45,7 @@ header {
 }
 
 .logo i {
+    
     font-size: 1.2rem;
     margin-right: 8px;
 }
@@ -98,6 +99,7 @@ body {
 }
 
 .container {
+    
     width: 100%;
     max-width: 1200px;
     display: flex;
@@ -222,6 +224,8 @@ body {
 }
 /*-----------circle---------------------------------------------------------------------*/
 .settings-panel {
+    position: relative;
+    top: 2cm;
     width: 100%;
     max-width: 600px;
     background: var(--accent-color);
@@ -238,12 +242,14 @@ body {
 }
 
 .settings-group {
+    
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
 .settings-label {
+    
     font-size: 1.1rem;
     margin-bottom: 0.3rem;
 }
@@ -268,6 +274,7 @@ body {
 }
 
 .btn {
+    
     padding: 1rem 2rem;
     font-size: 1.2rem;
     background: transparent;
@@ -411,14 +418,46 @@ body {
     letter-spacing: 0.1rem;
 }
 
-@media (max-width: 600px) {
-    .timer-container {
-        width: 300px;
-        height: 300px;
+
+}
+/* Mobile Responsive Styles */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 10px;
+        font-size: 16px;
+    }
+    
+    .settings-icon {
+        top: calc(80px + 3cm);
+        right: 10px;
+        width: 50px;
+        height: 50px;
     }
 
-    .title {
-        font-size: 1.8rem;
+    .settings-panel {
+        top: calc(70px + 3cm);
+        right: 10px;
+        width: calc(100% - 40px);
+        max-width: 400px;
+        padding: 1rem;
+        max-height: 80vh;
+        overflow-y: auto;
+        touch-action: manipulation;
+    }
+
+    .settings-panel.show {
+        transform: translateX(0);
+        box-shadow: 0 0 20px rgba(0, 179, 255, 0.3);
+    }
+    .timer-container {
+        width: 90%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .progress-ring {
+        width: 200px;
+        height: 200px;
     }
 
     .time-display {
@@ -426,14 +465,54 @@ body {
     }
 
     .controls {
-        flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
     }
 
-    .btn {
+    .controls button {
+        flex: 1;
+        padding: 12px;
+        font-size: 1rem;
+        touch-action: manipulation;
+    }
+
+    #settings-panel {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .settings-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .youtube-container {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .volume-slider {
         width: 100%;
     }
+    
+    
 }
 
+/* Ensure touch targets are large enough */
+button, input[type="range"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Prevent text scaling on mobile orientation change */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
 .notification {
     position: fixed;
     top: 20px;
@@ -466,8 +545,9 @@ body {
 
     
     .settings-icon {
+        
         position: fixed;
-        top: 20px;
+        top: 80px;
         right: 20px;
         width: 40px;
         height: 40px;
