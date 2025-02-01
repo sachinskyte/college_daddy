@@ -8,7 +8,7 @@ College Buddy is a simple and user-friendly webpage designed for students of MVJ
 - **Additional Tools**: More features tailored for MVJ students to enhance their academic experience.
 
 ## Demo
-Check out the live demo of College Buddy here: [College Buddy Demo](https://sachinskyte.github.io/college_buddy/)
+Check out the live demo of College Buddy here: [College Daddy Demo](https://collegedaddy.vercel.app/index.html)
 
 ## Installation
 To run this project locally:

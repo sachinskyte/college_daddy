@@ -1,0 +1,1051 @@
+{
+  "semesters": [
+    {
+      "id": 1,
+      "name": "Semester 1",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "PHYSICS CYCLE",
+          "subjects": [
+            {
+              "id": "ai101",
+              "name": "PHYSICS",
+              "materials": [
+                {
+                  "title": "Introduction to AI",
+                  "description": "Basic concepts of AI and its applications",
+                  "path": "/data/notes/semester-1/ai/ai-fundamentals/lecture-1.pdf",
+                  "type": "pdf",
+                  "size": "2.4MB",
+                  "uploadDate": "2025-01-15",
+                  "author": "Dr. Sarah Chen",
+                  "tags": ["ai", "introduction", "fundamentals"]
+                }
+              ]
+            },
+            {
+              "id": "ai102",
+              "name": "MATHS",
+              "materials": []
+            },
+            {
+              "id": "ai103",
+              "name": "Balake kannada",
+              "materials": []
+            },
+            {
+              "id": "ai104",
+              "name": "EE",
+              "materials": []
+            },
+            {
+              "id": "ai105",
+              "name": "Cybersecurity",
+              "materials": []
+            },
+            {
+              "id": "ai106",
+              "name": "AI Tools and Platforms",
+              "materials": []
+            }
+          ]
+        
+          
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Semester 2",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "Artificial Intelligence",
+          "subjects": [
+            {
+              "id": "ai201",
+              "name": "Machine Learning Basics",
+              "materials": []
+            },
+            {
+              "id": "ai202",
+              "name": "Neural Networks",
+              "materials": []
+            },
+            {
+              "id": "ai203",
+              "name": "Computer Vision",
+              "materials": []
+            },
+            {
+              "id": "ai204",
+              "name": "Natural Language Processing",
+              "materials": []
+            },
+            {
+              "id": "ai205",
+              "name": "Deep Learning",
+              "materials": []
+            },
+            {
+              "id": "ai206",
+              "name": "AI Project Management",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "cse",
+          "name": "Computer Science and Engineering",
+          "subjects": [
+            {
+              "id": "cse201",
+              "name": "Data Structures",
+              "materials": []
+            },
+            {
+              "id": "cse202",
+              "name": "Object-Oriented Programming",
+              "materials": []
+            },
+            {
+              "id": "cse203",
+              "name": "Operating Systems",
+              "materials": []
+            },
+            {
+              "id": "cse204",
+              "name": "Database Management",
+              "materials": []
+            },
+            {
+              "id": "cse205",
+              "name": "Computer Networks",
+              "materials": []
+            },
+            {
+              "id": "cse206",
+              "name": "Web Development",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "ece",
+          "name": "Electronics and Communication Engineering",
+          "subjects": [
+            {
+              "id": "ece201",
+              "name": "Analog Electronics",
+              "materials": []
+            },
+            {
+              "id": "ece202",
+              "name": "Digital Signal Processing",
+              "materials": []
+            },
+            {
+              "id": "ece203",
+              "name": "Control Systems",
+              "materials": []
+            },
+            {
+              "id": "ece204",
+              "name": "Electromagnetic Theory",
+              "materials": []
+            },
+            {
+              "id": "ece205",
+              "name": "Power Electronics",
+              "materials": []
+            },
+            {
+              "id": "ece206",
+              "name": "Communication Systems",
+              "materials": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Semester 3",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "Artificial Intelligence",
+          "subjects": [
+            {
+              "id": "ai301",
+              "name": "Advanced Machine Learning",
+              "materials": []
+            },
+            {
+              "id": "ai302",
+              "name": "Reinforcement Learning",
+              "materials": []
+            },
+            {
+              "id": "ai303", 
+              "name": "Advanced Computer Vision",
+              "materials": []
+            },
+            {
+              "id": "ai304",
+              "name": "Advanced NLP",
+              "materials": []
+            },
+            {
+              "id": "ai305",
+              "name": "AI in Robotics",
+              "materials": []
+            },
+            {
+              "id": "ai306",
+              "name": "AI Research Methods",
+              "materials": []
+            }
+          ]
+        },
+
+        
+        {
+          "id": "cse",
+          "name": "Computer Science and Engineering",
+          
+          "subjects": [
+            {
+              "id": "cse301",
+              "name": "Operating system",
+              "materials": [{
+                "title": "Module 1",
+                "description": "INTRODUCTION TO OS ",
+                "path": "/data/notes/semester-3/cse/operating-system/module-1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },
+              {
+                "title": "Module 2",
+                "description": "Multithreaded Programming",
+                "path": "/data/notes/semester-3/cse/operating-system/module_2.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 3",
+                "description": "Deadlocks ",
+                "path": "/data/notes/semester-3/cse/operating-system/module_3.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 4",
+                "description": "VIRTUAL MEMORYMANAGEMENT  ",
+                "path": "/data/notes/semester-3/cse/operating-system/module_4.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 5",
+                "description": "Secondry Storage structure",
+                "path": "/data/notes/semester-3/cse/operating-system/module_5.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            },
+
+
+
+            {
+              "id": "cse302",
+              "name": "DDCO",
+              "materials": [{
+                "title": "All Modules",
+                "description": " ",
+                "path": "/data/notes/semester-3/cse/DDCO/m1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }
+            ]
+            },
+            {
+              "id": "cse303",
+              "name": "Maths",
+              "materials": [{
+                "title": "Module 1",
+                "description": "Probability distribution ",
+                "path": "/data/notes/semester-3/cse/maths/module-1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },
+              {
+                "title": "Module 2",
+                "description": "Sampling Theory",
+                "path": "/data/notes/semester-3/cse/maths/module_2.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 3",
+                "description": "Markov Chains",
+                "path": "/data/notes/semester-3/cse/maths/module_2.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 4",
+                "description": "Curve fitting  ",
+                "path": "/data/notes/semester-3/cse/maths/module_4.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 5",
+                "description": "",
+                "path": "/data/notes/semester-3/cse/maths/module_5.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            },
+            {
+              "id": "cse304",
+              "name": "DSA",
+              "materials": [{
+                "title": "Module 1",
+                "description": "Intro to DSA ",
+                "path": "/data/notes/semester-3/cse/dsa/module-1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },
+              {
+                "title": "Module 2",
+                "description": "stacks",
+                "path": "/data/notes/semester-3/cse/dsa/module_2.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 3",
+                "description": "LINKED LISTS",
+                "path": "/data/notes/semester-3/cse/dsa/module-3.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 4",
+                "description": "TREES ",
+                "path": "/data/notes/semester-3/cse/dsa/module_4.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 5",
+                "description": "Hashing",
+                "path": "/data/notes/semester-3/cse/dsa/module_5.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            },
+            {
+              "id": "cse305",
+              "name": "JAVA",
+              "materials": [{
+                "title": "Module 1",
+                "description": "Intro to JAVA ",
+                "path": "/data/notes/semester-3/cse/java/module-1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },
+              {
+                "title": "Module 2",
+                "description": "Introducing Classes  ",
+                "path": "/data/notes/semester-3/cse/java/module_2.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 3",
+                "description": " Inheritance ",
+                "path": "/data/notes/semester-3/cse/java/module-3.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 4",
+                "description": ": Packages  ",
+                "path": "/data/notes/semester-3/cse/java/module_4.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 5",
+                "description": "Multithreaded Programming",
+                "path": "/data/notes/semester-3/cse/java/module_5.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            },
+            {
+              "id": "cse306",
+              "name": "Question papers",
+              "materials": [{
+                "title": "PYQ",
+                "description": "2024",
+                "path": "/data/notes/semester-3/cse/question/q1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            },{
+              "id": "cse307",
+              "name": "Lab manual",
+              "materials": [{
+                "title": "DSA LAB Manual",
+                "description": "3rd sem",
+                "path": "/data/notes/semester-3/cse/Manuals/DSALAB.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "OS LAB Manual",
+                "description": "3rd sem",
+                "path": "/data/notes/semester-3/cse/Manuals/OSLAB.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            }, {
+              "id": "cse308",
+              "name": "Syllabus",
+              "materials": [{
+                "title": "Syllabus",
+                "description": "",
+                "path": "/data/notes/semester-3/cse/syllabus/syllabus.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            }
+          ]
+        },
+        {
+          "id": "ece",
+          "name": "Electronics and Communication Engineering",
+          "subjects": [
+            {
+              "id": "ece301",
+              "name": "Advanced DSP",
+              "materials": []
+            },
+            {
+              "id": "ece302",
+              "name": "Microprocessors",
+              "materials": []
+            },
+            {
+              "id": "ece303",
+              "name": "Antenna Theory",
+              "materials": []
+            },
+            {
+              "id": "ece304",
+              "name": "VLSI Design",
+              "materials": []
+            },
+            {
+              "id": "ece305",
+              "name": "Wireless Communications",
+              "materials": []
+            },
+            {
+              "id": "ece306",
+              "name": "Embedded Systems",
+              "materials": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Semester 4",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "Artificial Intelligence",
+          "subjects": [
+            {
+              "id": "ai401",
+              "name": "AI Systems Design",
+              "materials": []
+            },
+            {
+              "id": "ai402",
+              "name": "Advanced Deep Learning",
+              "materials": []
+            },
+            {
+              "id": "ai403",
+              "name": "Computer Graphics",
+              "materials": []
+            },
+            {
+              "id": "ai404",
+              "name": "Pattern Recognition",
+              "materials": []
+            },
+            {
+              "id": "ai405",
+              "name": "Generative AI",
+              "materials": []
+            },
+            {
+              "id": "ai406",
+              "name": "AI Security",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "cse",
+          "name": "Computer Science and Engineering",
+          "subjects": [
+            {
+              "id": "cse401",
+              "name": "Distributed Systems",
+              "materials": []
+            },
+            {
+              "id": "cse402",
+              "name": "Compiler Design",
+              "materials": []
+            },
+            {
+              "id": "cse403",
+              "name": "Information Security",
+              "materials": []
+            },
+            {
+              "id": "cse404",
+              "name": "Graphics and Gaming",
+              "materials": []
+            },
+            {
+              "id": "cse405",
+              "name": "Data Mining",
+              "materials": []
+            },
+            {
+              "id": "cse406",
+              "name": "System Design",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "ece",
+          "name": "Electronics and Communication Engineering",
+          "subjects": [
+            {
+              "id": "ece401",
+              "name": "Optical Communications",
+              "materials": []
+            },
+            {
+              "id": "ece402",
+              "name": "Satellite Communications",
+              "materials": []
+            },
+            {
+              "id": "ece403",
+              "name": "Advanced VLSI",
+              "materials": []
+            },
+            {
+              "id": "ece404",
+              "name": "RF Circuit Design",
+              "materials": []
+            },
+            {
+              "id": "ece405",
+              "name": "IoT Systems",
+              "materials": []
+            },
+            {
+              "id": "ece406",
+              "name": "Advanced Control Systems",
+              "materials": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Semester 5",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "Artificial Intelligence",
+          "subjects": [
+            {
+              "id": "ai501",
+              "name": "Quantum Computing for AI",
+              "materials": []
+            },
+            {
+              "id": "ai502",
+              "name": "AI in Healthcare",
+              "materials": []
+            },
+            {
+              "id": "ai503",
+              "name": "Autonomous Systems",
+              "materials": []
+            },
+            {
+              "id": "ai504",
+              "name": "Advanced AI Ethics",
+              "materials": []
+            },
+            {
+              "id": "ai505",
+              "name": "AI for IoT",
+              "materials": []
+            },
+            {
+              "id": "ai506",
+              "name": "Edge AI",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "cse",
+          "name": "Computer Science and Engineering",
+          "subjects": [
+            {
+              "id": "cse501",
+              "name": "Parallel Computing",
+              "materials": []
+            },
+            {
+              "id": "cse502",
+              "name": "Blockchain Technology",
+              "materials": []
+            },
+            {
+              "id": "cse503",
+              "name": "Big Data Analytics",
+              "materials": []
+            },
+            {
+              "id": "cse504",
+              "name": "DevOps Engineering",
+              "materials": []
+            },
+            {
+              "id": "cse505",
+              "name": "Network Security",
+              "materials": []
+            },
+            {
+              "id": "cse506",
+              "name": "Advanced Web Tech",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "ece",
+          "name": "Electronics and Communication Engineering",
+          "subjects": [
+            {
+              "id": "ece501",
+              "name": "5G Technologies",
+              "materials": []
+            },
+            {
+              "id": "ece502",
+              "name": "Advanced IoT",
+              "materials": []
+            },
+            {
+              "id": "ece503",
+              "name": "Robotics",
+              "materials": []
+            },
+            {
+              "id": "ece504",
+              "name": "Machine Vision",
+              "materials": []
+            },
+            {
+              "id": "ece505",
+              "name": "Advanced Embedded Systems",
+              "materials": []
+            },
+            {
+              "id": "ece506",
+              "name": "Signal Intelligence",
+              "materials": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Semester 6",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "Artificial Intelligence",
+          "subjects": [
+            {
+              "id": "ai601",
+              "name": "AI for Finance",
+              "materials": []
+            },
+            {
+              "id": "ai602",
+              "name": "Multimodal AI",
+              "materials": []
+            },
+            {
+              "id": "ai603",
+              "name": "AI for Gaming",
+              "materials": []
+            },
+            {
+              "id": "ai604",
+              "name": "AI Operations",
+              "materials": []
+            },
+            {
+              "id": "ai605",
+              "name": "Advanced AI Systems",
+              "materials": []
+            },
+            {
+              "id": "ai606",
+              "name": "AI Project Lab",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "cse",
+          "name": "Computer Science and Engineering",
+          "subjects": [
+            {
+              "id": "cse601",
+              "name": "Quantum Computing",
+              "materials": []
+            },
+            {
+              "id": "cse602",
+              "name": "Natural Language Processing",
+              "materials": []
+            },
+            {
+              "id": "cse603",
+              "name": "Computer Vision",
+              "materials": []
+            },
+            {
+              "id": "cse604",
+              "name": "High Performance Computing",
+              "materials": []
+            },
+            {
+              "id": "cse605",
+              "name": "Software Testing",
+              "materials": []
+            },
+            {
+              "id": "cse606",
+              "name": "Project Management",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "ece",
+          "name": "Electronics and Communication Engineering",
+          "subjects": [
+            {
+              "id": "ece601",
+              "name": "Advanced Digital Design",
+              "materials": []
+            },
+            {
+              "id": "ece602",
+              "name": "Network Programming",
+              "materials": []
+            },
+            {
+              "id": "ece603",
+              "name": "Digital Image Processing",
+              "materials": []
+            },
+            {
+              "id": "ece604",
+              "name": "Microwave Engineering",
+              "materials": []
+            },
+            {
+              "id": "ece605",
+              "name": "Real-time Systems",
+              "materials": []
+            },
+            {
+              "id": "ece606",
+              "name": "Advanced Communication",
+              "materials": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Semester 7",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "Artificial Intelligence",
+          "subjects": [
+            {
+              "id": "ai701",
+              "name": "AI Research Project",
+              "materials": []
+            },
+            {
+              "id": "ai702",
+              "name": "AI in Business",
+              "materials": []
+            },
+            {
+              "id": "ai703",
+              "name": "Advanced Neural Systems",
+              "materials": []
+            },
+            {
+              "id": "ai704",
+              "name": "AI in Robotics Advanced",
+              "materials": []
+            },
+            {
+              "id": "ai705",
+              "name": "Cognitive Computing",
+              "materials": []
+            },
+            {
+              "id": "ai706",
+              "name": "Industry Project I",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "cse",
+          "name": "Computer Science and Engineering",
+          "subjects": [
+            {
+              "id": "cse701",
+              "name": "Advanced System Design",
+              "materials": []
+            },
+            {
+              "id": "cse702",
+              "name": "Data Science",
+              "materials": []
+            },
+            {
+              "id": "cse703",
+              "name": "Enterprise Software",
+              "materials": []
+            },
+            {
+              "id": "cse704",
+              "name": "Cybersecurity",
+              "materials": []
+            },
+            {
+              "id": "cse705",
+              "name": "Research Methods",
+              "materials": []
+            },
+            {
+              "id": "cse706",
+              "name": "Industry Project I",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "ece",
+          "name": "Electronics and Communication Engineering",
+          "subjects": [
+            {
+              "id": "ece701",
+              "name": "VLSI Testing",
+              "materials": []
+            },
+            {
+              "id": "ece702",
+              "name": "Mixed Signal Design",
+              "materials": []
+            },
+            {
+              "id": "ece703",
+              "name": "Hardware Security",
+              "materials": []
+            },
+            {
+              "id": "ece704",
+              "name": "Advanced DSP Applications",
+              "materials": []
+            },
+            {
+              "id": "ece705",
+              "name": "Research Methods",
+              "materials": []
+            },
+            {
+              "id": "ece706",
+              "name": "Industry Project I",
+              "materials": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Semester 8",
+      "branches": [
+        {
+          "id": "ai",
+          "name": "Artificial Intelligence",
+          "subjects": [
+            {
+              "id": "ai801",
+              "name": "Thesis Project",
+              "materials": []
+            },
+            {
+              "id": "ai802",
+              "name": "AI Ethics and Governance",
+              "materials": []
+            },
+            {
+              "id": "ai803",
+              "name": "Advanced AI Applications",
+              "materials": []
+            },
+            {
+              "id": "ai804",
+              "name": "AI Systems Integration",
+              "materials": []
+            },
+            {
+              "id": "ai805",
+              "name": "Future of AI",
+              "materials": []
+            },
+            {
+              "id": "ai806",
+              "name": "Industry Project II",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "cse",
+          "name": "Computer Science and Engineering",
+          "subjects": [
+            {
+              "id": "cse801",
+              "name": "Thesis Project",
+              "materials": []
+            },
+            {
+              "id": "cse802",
+              "name": "Emerging Technologies",
+              "materials": []
+            },
+            {
+              "id": "cse803",
+              "name": "Tech Entrepreneurship",
+              "materials": []
+            },
+            {
+              "id": "cse804",
+              "name": "Advanced Architecture",
+              "materials": []
+            },
+            {
+              "id": "cse805",
+              "name": "Professional Ethics",
+              "materials": []
+            },
+            {
+              "id": "cse806",
+              "name": "Industry Project II",
+              "materials": []
+            }
+          ]
+        },
+        {
+          "id": "ece",
+          "name": "Electronics and Communication Engineering",
+          "subjects": [
+            {
+              "id": "ece801",
+              "name": "Thesis Project",
+              "materials": []
+            },
+            {
+              "id": "ece802",
+              "name": "Advanced Communication Systems",
+              "materials": []
+            },
+            {
+              "id": "ece803",
+              "name": "Tech Entrepreneurship",
+              "materials": []
+            },
+            {
+              "id": "ece804",
+              "name": "Future Communication",
+              "materials": []
+            },
+            {
+              "id": "ece805",
+              "name": "Professional Ethics",
+              "materials": []
+            },
+            {
+              "id": "ece806",
+              "name": "Industry Project II",
+              "materials": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
