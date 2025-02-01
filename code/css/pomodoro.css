@@ -6,9 +6,29 @@
 }
 
 :root {
-    --primary-color: #00b3ff;
-    --background-color: #000;
-    --accent-color: rgba(0, 179, 255, 0.1);
+    /* Primary colors */
+    --primary-color: #009dff;
+    --primary-hover: #00ff88;
+    --primary-dim: rgba(0, 157, 255, 0.1);
+    
+    /* Background colors */
+    --bg-dark: #000000;
+    --bg-darker: #000000;
+    --card-bg: #181818;
+    --input-bg: #242424;
+    
+    /* Text colors */
+    --text-light: #ffffff;
+    --text-gray: #888888;
+    --text-muted: #666666;
+    
+    /* Status colors */
+    --error-color: #ff4444;
+    --success-color: #00ff88;
+    
+    /* Effects */
+    --shadow-color: rgba(0, 157, 255, 0.2);
+    --transition-speed: 0.3s;
 }
 /* Header and Navigation */
 header {
@@ -26,66 +46,87 @@ header {
 
 .nav-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
 .logo {
-    color: var(--primary-blue);
+    font-size: 1.5rem;
+    color: var(--primary-color);
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.logo i {
-    
-    font-size: 1.2rem;
-    margin-right: 8px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav-link {
-    color: #fff;
-    text-decoration: none;
+    font-weight: bold;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.nav-link:hover {
-    background-color: rgba(0, 157, 255, 0.1);
-}
-
-.nav-link.active {
-    background-color: var(--primary-blue);
-    color: white;
 }
 
 .menu-button {
     display: none;
     background: none;
     border: none;
-    color: #fff;
-    font-size: 1.5rem;
+    color: var(--text-light);
+    font-size: 24px;
     cursor: pointer;
     padding: 0.5rem;
 }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Reduced gap for better spacing */
+    margin: 0;
+    padding: 0; /* Removed excessive padding */
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.nav-link:hover {
+    background-color: var(--primary-dim);
+    color: var(--primary-color);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-darker);
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+
 
 body {
     background-color: var(--background-color);

@@ -7,7 +7,7 @@
     
     /* Background colors */
     --bg-dark: #000000;
-    --bg-darker: #1e1e1e;
+    --bg-darker: #000000;
     --card-bg: #181818;
     --input-bg: #242424;
     
@@ -31,7 +31,14 @@
     box-sizing: border-box;
     font-family: 'Roboto', system-ui, -apple-system, sans-serif;
 }
-
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 24px;
+    cursor: pointer;
+}
 /* Base styles */
 body {
     background-color: var(--bg-dark);
@@ -83,7 +90,7 @@ header {
     transition: all var(--transition-speed) ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem;
 }
 
 .nav-link:hover {
