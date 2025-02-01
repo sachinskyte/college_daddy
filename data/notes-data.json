@@ -6,11 +6,11 @@
       "branches": [
         {
           "id": "ai",
-          "name": "Artificial Intelligence",
+          "name": "PHYSICS CYCLE",
           "subjects": [
             {
               "id": "ai101",
-              "name": "AI Fundamentals",
+              "name": "PHYSICS",
               "materials": [
                 {
                   "title": "Introduction to AI",
@@ -26,22 +26,22 @@
             },
             {
               "id": "ai102",
-              "name": "Programming for AI",
+              "name": "MATHS",
               "materials": []
             },
             {
               "id": "ai103",
-              "name": "Mathematics for AI",
+              "name": "Balake kannada",
               "materials": []
             },
             {
               "id": "ai104",
-              "name": "Data Preprocessing",
+              "name": "EE",
               "materials": []
             },
             {
               "id": "ai105",
-              "name": "AI Ethics",
+              "name": "Cybersecurity",
               "materials": []
             },
             {
@@ -50,78 +50,8 @@
               "materials": []
             }
           ]
-        },
-        {
-          "id": "cse",
-          "name": "Computer Science and Engineering",
-          "subjects": [
-            {
-              "id": "cse101",
-              "name": "Programming Fundamentals",
-              "materials": []
-            },
-            {
-              "id": "cse102",
-              "name": "Computer Organization",
-              "materials": []
-            },
-            {
-              "id": "cse103",
-              "name": "Discrete Mathematics",
-              "materials": []
-            },
-            {
-              "id": "cse104",
-              "name": "Digital Logic Design",
-              "materials": []
-            },
-            {
-              "id": "cse105",
-              "name": "Professional Communication",
-              "materials": []
-            },
-            {
-              "id": "cse106",
-              "name": "Basic Electronics",
-              "materials": []
-            }
-          ]
-        },
-        {
-          "id": "ece",
-          "name": "Electronics and Communication Engineering",
-          "subjects": [
-            {
-              "id": "ece101",
-              "name": "Basic Electronics",
-              "materials": []
-            },
-            {
-              "id": "ece102",
-              "name": "Circuit Theory",
-              "materials": []
-            },
-            {
-              "id": "ece103",
-              "name": "Digital Electronics",
-              "materials": []
-            },
-            {
-              "id": "ece104",
-              "name": "Electronic Devices",
-              "materials": []
-            },
-            {
-              "id": "ece105",
-              "name": "Signals and Systems",
-              "materials": []
-            },
-            {
-              "id": "ece106",
-              "name": "Communication Basics",
-              "materials": []
-            }
-          ]
+        
+          
         }
       ]
     },
@@ -364,7 +294,7 @@
               },{
                 "title": "Module 3",
                 "description": "Markov Chains",
-                "path": "/data/notes/semester-3/cse/maths/module_3.pdf",
+                "path": "/data/notes/semester-3/cse/maths/module_2.pdf",
                 "type": "pdf",
                 "size": "2.4MB",
                 "uploadDate": "2025-01-31"
@@ -386,18 +316,126 @@
             },
             {
               "id": "cse304",
-              "name": "Theory of Computation",
-              "materials": []
+              "name": "DSA",
+              "materials": [{
+                "title": "Module 1",
+                "description": "Intro to DSA ",
+                "path": "/data/notes/semester-3/cse/dsa/module-1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },
+              {
+                "title": "Module 2",
+                "description": "stacks",
+                "path": "/data/notes/semester-3/cse/dsa/module_2.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 3",
+                "description": "LINKED LISTS",
+                "path": "/data/notes/semester-3/cse/dsa/module-3.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 4",
+                "description": "TREES ",
+                "path": "/data/notes/semester-3/cse/dsa/module_4.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 5",
+                "description": "Hashing",
+                "path": "/data/notes/semester-3/cse/dsa/module_5.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
             },
             {
               "id": "cse305",
-              "name": "Cloud Computing",
-              "materials": []
+              "name": "JAVA",
+              "materials": [{
+                "title": "Module 1",
+                "description": "Intro to JAVA ",
+                "path": "/data/notes/semester-3/cse/java/module-1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },
+              {
+                "title": "Module 2",
+                "description": "Introducing Classes  ",
+                "path": "/data/notes/semester-3/cse/java/module_2.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 3",
+                "description": " Inheritance ",
+                "path": "/data/notes/semester-3/cse/java/module-3.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 4",
+                "description": ": Packages  ",
+                "path": "/data/notes/semester-3/cse/java/module_4.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "Module 5",
+                "description": "Multithreaded Programming",
+                "path": "/data/notes/semester-3/cse/java/module_5.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
             },
             {
               "id": "cse306",
-              "name": "Mobile Development",
-              "materials": []
+              "name": "Question papers",
+              "materials": [{
+                "title": "PYQ",
+                "description": "2024",
+                "path": "/data/notes/semester-3/cse/question/q1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            },{
+              "id": "cse307",
+              "name": "Lab manual",
+              "materials": [{
+                "title": "DSA LAB Manual",
+                "description": "3rd sem",
+                "path": "/data/notes/semester-3/cse/Manuals/DSALAB.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              },{
+                "title": "OS LAB Manual",
+                "description": "3rd sem",
+                "path": "/data/notes/semester-3/cse/Manuals/OSLAB.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
+            }, {
+              "id": "cse308",
+              "name": "Syllabus",
+              "materials": [{
+                "title": "Syllabus",
+                "description": "",
+                "path": "/data/notes/semester-3/cse/syllabus/syllabus.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
             }
           ]
         },
