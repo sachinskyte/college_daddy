@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Portal</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="College Buddy Home">
+                <i class="fas fa-graduation-cap"></i>
+                <span>College Daddy</span>
+            </a>
+            <button class="menu-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="cgpa.html" class="nav-link ">
+                    <i class="fas fa-calculator"></i>
+                    <span>CGPA Calculator</span>
+                </a>
+                <a href="iacal.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>IA Calculator</span>
+                </a>
+                <a href="pomodoro.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Study timer</span>
+                </a>
+                <a href="notes.html" class="nav-link active">
+                    
+                    <span>Notes </span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    <nav>
+        <h1>Notes Portal</h1>
+        <input type="search" id="searchInput" placeholder="Search notes...">
+    </nav>
+
+    <div id="breadcrumb">Home</div>
+
+    <main id="content">
+        <!-- Content will be loaded dynamically -->
+    </main>
+
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
