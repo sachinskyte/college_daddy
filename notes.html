@@ -14,8 +14,9 @@
                 <i class="fas fa-graduation-cap"></i>
                 <span>College Daddy</span>
             </a>
-            <button class="menu-button" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
+            <button class="menu-button">
+               
+                ☰
             </button>
             <nav class="nav-links" aria-label="Main navigation">
                 <a href="index.html" class="nav-link">
@@ -56,5 +57,23 @@
     <script src="assets/js/navigation.js"></script>
     <script src="assets/js/search.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>// Get the necessary elements
+        const menuButton = document.querySelector('.menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        
+        // Toggle menu when button is clicked
+        menuButton.addEventListener('click', () => {
+            // Toggle the active class on both the button and nav links
+            menuButton.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside (optional, but recommended)
+        document.addEventListener('click', (e) => {
+            if (!menuButton.contains(e.target) && !navLinks.contains(e.target)) {
+                menuButton.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });</script>
 </body>
 </html>

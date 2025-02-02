@@ -86,18 +86,30 @@ header {
     font-size: 1.75rem;
 }
 
+/* Menu Button Styles */
 .menu-button {
     display: none;
     background: none;
     border: none;
-    color: var(--text-light);
+    color: var(--text-primary);
     font-size: 24px;
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all var(--transition-speed) ease;
 }
 
 .menu-button:hover {
+    background-color: var(--primary-dim);
     color: var(--primary-color);
 }
+
+.menu-button.active {
+    background-color: var(--primary-dim);
+    color: var(--primary-color);
+}
+
+
 
 .nav-links {
     display: flex;
@@ -298,17 +310,20 @@ header {
 @media (max-width: 768px) {
     .nav-container {
         flex-wrap: wrap;
+        gap: 1rem;  /* Added gap for better spacing */
     }
 
-    .menu-button {
-        display: block;
-    }
-
+   
+        .menu-button {
+            display: block;
+        }
+    
     .nav-links {
         display: none;
         width: 100%;
         flex-direction: column;
         padding: 1rem 0;
+        order: 3;  /* Added order to control layout */
     }
 
     .nav-links.active {
@@ -322,6 +337,7 @@ header {
 
     #searchInput {
         width: 100%;
+        order: 2;  /* Added order to control layout */
     }
 
     .grid {

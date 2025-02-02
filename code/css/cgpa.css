@@ -35,9 +35,22 @@
     display: none;
     background: none;
     border: none;
-    color: var(--text-light);
+    color: var(--text-primary);
     font-size: 24px;
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all var(--transition-speed) ease;
+}
+
+.menu-button:hover {
+    background-color: var(--primary-dim);
+    color: var(--primary-color);
+}
+
+.menu-button.active {
+    background-color: var(--primary-dim);
+    color: var(--primary-color);
 }
 /* Base styles */
 body {
