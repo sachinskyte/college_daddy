@@ -212,16 +212,25 @@
         return (match && match[2].length === 11) ? match[2] : null;
     }
 
-    updateVolume(value) {
-        const iframe = this.youtubeContainer.querySelector('iframe');
-        if (iframe) {
-            iframe.contentWindow.postMessage({
+   updateVolume(value) {
+    const iframe = this.youtubeContainer.querySelector('iframe');
+    if (iframe && iframe.contentWindow) {
+        // Convert value to integer between 0-100
+        const volumeLevel = Math.floor(Number(value));
+        
+        // Make sure player is ready
+        if (this.player && typeof this.player.setVolume === 'function') {
+            this.player.setVolume(volumeLevel);
+        } else {
+            // If using postMessage API
+            iframe.contentWindow.postMessage(JSON.stringify({
                 event: 'command',
                 func: 'setVolume',
-                args: [value]
-            }, '*');
+                args: [volumeLevel]
+            }), '*');
         }
     }
+}
 
     showNotification(message) {
         const notification = document.getElementById('notification');

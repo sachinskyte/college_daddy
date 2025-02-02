@@ -162,7 +162,7 @@ body {
 /*-----------circle---------------------------------------------------------------------*/
 .timer-container {
     position: relative;
-    top: 2cm;
+    top: 0.5cm;
     position: relative;
     width: min(80vw, 600px);
     height: min(80vw, 600px);
@@ -306,7 +306,7 @@ body {
 
 .controls {
     position: relative;
-    top: 2cm;
+    top: 0cm;
     display: flex;
     gap: 1rem;
     margin: 2rem 0;
@@ -393,29 +393,6 @@ body {
     border-radius: 5px;
 }
 
-.volume-control {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.volume-slider {
-    flex: 1;
-    -webkit-appearance: none;
-    height: 4px;
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    cursor: pointer;
-}
 
 .stats-panel {
     width: 100%;
@@ -460,7 +437,7 @@ body {
 }
 
 
-}
+
 /* Mobile Responsive Styles */
 @media screen and (max-width: 600px) {
     body {
