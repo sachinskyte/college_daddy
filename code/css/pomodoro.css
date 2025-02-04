@@ -270,7 +270,15 @@ body {
     border-radius: 5px;
     font-size: 1rem;
 }
-
+.footer {
+    position: relative;
+    top: 3cm;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-gray);
+    background-color: var(--bg-darker);
+    margin-top: 3rem;
+}
 .controls {
     position: relative;
     top: 0cm;

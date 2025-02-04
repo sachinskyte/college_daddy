@@ -376,7 +376,13 @@ header {
     background: var(--primary-color);
     color: var(--text-primary);
 }
-
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-gray);
+    background-color: var(--bg-darker);
+    margin-top: 3rem;
+}
 /* Additional Utility Classes */
 .text-primary { color: var(--text-primary); }
 .text-secondary { color: var(--text-secondary); }
