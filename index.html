@@ -221,45 +221,156 @@
         <p>Your ultimate companion for academic success. Track your progress, calculate your grades, and stay organized throughout your college journey.</p>
     </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3>CGPA Calculator</h3>
-            <p>Calculate your CGPA easily with our advanced calculator. Track your academic progress across semesters.</p>
+    <body style="background-color: #000000; color: #ffffff; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+        <div class="features" style="max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <div onclick="window.location.href='cgpa.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
+                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📊</div>
+                <h3 style="color: #ffffff; margin-bottom: 15px;">CGPA Calculator</h3>
+                <p style="color: #a0a0a0; margin: 0;">Calculate your CGPA easily with our advanced calculator. Track your academic progress across semesters.</p>
+            </div>
+        
+            <div onclick="window.location.href='notes.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
+                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📒</div>
+                <h3 style="color: #ffffff; margin-bottom: 15px;">Notes</h3>
+                <p style="color: #a0a0a0; margin: 0;">Get notes, lab manuals, and question papers for all 8 semesters in one place! 📚 Perfect for exams, revisions, and practicals.</p>
+            </div>
+        
+            <div onclick="window.location.href='iacal.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
+                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📝</div>
+                <h3 style="color: #ffffff; margin-bottom: 15px;">IA Calculator</h3>
+                <p style="color: #a0a0a0; margin: 0;">Keep track of your internal assessment marks and calculate your best performances.</p>
+            </div>
+        
+            <div onclick="window.location.href='pomodoro.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
+                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">⏳</div>
+                <h3 style="color: #ffffff; margin-bottom: 15px;">Pomodoro Timer</h3>
+                <p style="color: #a0a0a0; margin: 0;">Boost your productivity with this simple Pomodoro timer! Stay focused by working in short sprints with regular breaks. ⏳✅</p>
+            </div>
+        
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">📒</div>
-            <h3>Notes</h3>
-            <p>Get notes, lab manuals, and question papers for all 8 semesters in one place! 📚 Perfect for exams, revisions, and practicals. No more last-minute searching—everything you need, just a click away! 🚀</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📝</div>
-            <h3>IA Calculator</h3>
-            <p>Keep track of your internal assessment marks and calculate your best performances.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">⏳</div>
-            <h3>Pomodoro timer</h3>
-            <p>Boost your productivity with this simple Pomodoro timer! Stay focused by working in short sprints with regular breaks. ⏳✅</p>
-        </div>
-    </section>
+        
+        <script>
+            
+        document.querySelectorAll('.feature-card').forEach(card => {
+            // Add hover effect
+            card.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
+                this.style.backgroundColor = '#111111';
+            });
+        
+            // Remove hover effect
+            card.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+                this.style.backgroundColor = '#000000';
+            });
+        
+            // Add click effect
+            card.addEventListener('mousedown', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 2px 5px rgba(0, 157, 255, 0.2)';
+            });
+        
+            // Remove click effect
+            card.addEventListener('mouseup', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
+            });
+        });
+        </script>
 
 
     <script>
-        // Mobile menu toggle
-        const menuButton = document.querySelector('.menu-button');
-        const navLinks = document.querySelector('.nav-links');
+        function isMobile() {
+    return window.innerWidth <= 768;
+}
 
-        menuButton.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+// Initialize mobile menu
+function initializeMobileMenu() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileNav = document.getElementById('mobileNav');
+    const cards = document.querySelectorAll('.feature-card');
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!event.target.closest('.nav-container')) {
-                navLinks.classList.remove('active');
-            }
+    // Show/hide menu button based on screen size
+    if (isMobile()) {
+        menuButton.style.display = 'block';
+        cards.forEach(card => {
+            card.style.minWidth = '100%';
         });
+    } else {
+        menuButton.style.display = 'none';
+        mobileNav.style.display = 'none';
+        cards.forEach(card => {
+            card.style.minWidth = '300px';
+        });
+    }
+}
+
+// Toggle mobile menu
+document.getElementById('menuButton').addEventListener('click', function() {
+    const mobileNav = document.getElementById('mobileNav');
+    if (mobileNav.style.display === 'none' || !mobileNav.style.display) {
+        mobileNav.style.display = 'block';
+        this.style.backgroundColor = '#000000';
+    } else {
+        mobileNav.style.display = 'none';
+        this.style.backgroundColor = '#009dff';
+    }
+});
+
+// Navigation function
+function navigateTo(url) {
+    if (!isMobile()) {
+        window.location.href = url;
+    }
+}
+
+// Card hover effects
+document.querySelectorAll('.feature-card').forEach(card => {
+    // Touch start effect for mobile
+    card.addEventListener('touchstart', function(e) {
+        this.style.transform = 'scale(0.98)';
+        this.style.backgroundColor = '#111111';
+    });
+
+    // Touch end effect for mobile
+    card.addEventListener('touchend', function(e) {
+        this.style.transform = 'scale(1)';
+        this.style.backgroundColor = '#000000';
+        const url = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+        window.location.href = url;
+    });
+
+    // Mouse hover effects for desktop
+    card.addEventListener('mouseover', function() {
+        if (!isMobile()) {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
+            this.style.backgroundColor = '#111111';
+        }
+    });
+
+    card.addEventListener('mouseout', function() {
+        if (!isMobile()) {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+            this.style.backgroundColor = '#000000';
+        }
+    });
+});
+
+// Initialize on load
+window.addEventListener('load', initializeMobileMenu);
+
+// Handle resize
+window.addEventListener('resize', initializeMobileMenu);
+
+// Handle orientation change
+window.addEventListener('orientationchange', initializeMobileMenu);
+</script>
     </script>
      <footer class="footer">
         <p>&copy; 2025 College Daddy. All rights reserved. Devloped by Sachin</p>
