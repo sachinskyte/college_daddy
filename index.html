@@ -289,26 +289,72 @@
 }
 
 // Initialize mobile menu
+// Mobile menu functionality
+const menuButton = document.querySelector('.menu-button');
+const navLinks = document.querySelector('.nav-links');
+
+menuButton.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Initialize mobile menu
 function initializeMobileMenu() {
-    const menuButton = document.getElementById('menuButton');
-    const mobileNav = document.getElementById('mobileNav');
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
     const cards = document.querySelectorAll('.feature-card');
 
-    // Show/hide menu button based on screen size
-    if (isMobile()) {
+    // Show/hide menu based on screen size
+    if (window.innerWidth <= 768) {
         menuButton.style.display = 'block';
         cards.forEach(card => {
             card.style.minWidth = '100%';
         });
     } else {
         menuButton.style.display = 'none';
-        mobileNav.style.display = 'none';
+        navLinks.classList.remove('active');
         cards.forEach(card => {
             card.style.minWidth = '300px';
         });
     }
 }
 
+// Card navigation and effects
+document.querySelectorAll('.feature-card').forEach(card => {
+    // Touch start effect for mobile
+    card.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.98)';
+        this.style.backgroundColor = '#111111';
+    });
+
+    // Touch end effect for mobile
+    card.addEventListener('touchend', function() {
+        this.style.transform = 'scale(1)';
+        this.style.backgroundColor = '#000000';
+        const url = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+        window.location.href = url;
+    });
+
+    // Mouse hover effects for desktop
+    card.addEventListener('mouseover', function() {
+        if (window.innerWidth > 768) {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
+            this.style.backgroundColor = '#111111';
+        }
+    });
+
+    card.addEventListener('mouseout', function() {
+        if (window.innerWidth > 768) {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+            this.style.backgroundColor = '#000000';
+        }
+    });
+});
+
+// Initialize on load and resize
+window.addEventListener('load', initializeMobileMenu);
+window.addEventListener('resize', initializeMobileMenu);
 // Toggle mobile menu
 document.getElementById('menuButton').addEventListener('click', function() {
     const mobileNav = document.getElementById('mobileNav');
@@ -370,10 +416,13 @@ window.addEventListener('resize', initializeMobileMenu);
 
 // Handle orientation change
 window.addEventListener('orientationchange', initializeMobileMenu);
+
 </script>
     </script>
      <footer class="footer">
         <p>&copy; 2025 College Daddy. All rights reserved. Devloped by Sachin</p>
     </footer>
+
+
 </body>
 </html>
