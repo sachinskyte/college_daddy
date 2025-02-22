@@ -443,7 +443,52 @@ window.addEventListener('resize', initializeMobileMenu);
 
 // Handle orientation change
 window.addEventListener('orientationchange', initializeMobileMenu);
+// Touch handling variables
+let touchStartY = 0;
+let touchEndY = 0;
+const MIN_SWIPE_DISTANCE = 10;
 
+document.querySelectorAll('.features > div').forEach(card => {
+    // Remove existing touch handlers
+    card.removeEventListener('touchend', null);
+    card.removeEventListener('touchstart', null);
+
+    // New touch start handler
+    card.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+        // Apply pressed state
+        card.style.transform = 'scale(0.98)';
+        card.style.backgroundColor = '#111111';
+    });
+
+    // Touch move handler
+    card.addEventListener('touchmove', (e) => {
+        touchEndY = e.touches[0].clientY;
+        // If user is scrolling, remove pressed state
+        if (Math.abs(touchEndY - touchStartY) > MIN_SWIPE_DISTANCE) {
+            card.style.transform = 'scale(1)';
+            card.style.backgroundColor = '#000000';
+        }
+    });
+
+    // Touch end handler
+    card.addEventListener('touchend', (e) => {
+        const finalTouchY = e.changedTouches[0].clientY;
+        // Reset styles
+        card.style.transform = 'scale(1)';
+        card.style.backgroundColor = '#000000';
+
+        // Only navigate if it was a tap (not a scroll)
+        if (Math.abs(finalTouchY - touchStartY) < MIN_SWIPE_DISTANCE) {
+            const url = card.getAttribute('ondblclick').match(/href='([^']+)'/)[1];
+            window.location.href = url;
+        }
+    });
+
+    // Remove the ondblclick and ontouchend attributes
+    card.removeAttribute('ondblclick');
+    card.removeAttribute('ontouchend');
+});
 </script>
     </script>
      <footer class="footer">
