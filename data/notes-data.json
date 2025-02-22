@@ -523,8 +523,15 @@
           "subjects": [
             {
               "id": "cse401",
-              "name": "Distributed Systems",
-              "materials": []
+              "name": "GRAPH theory",
+              "materials": [{
+                "title": "Graph-syllabus",
+                "description": "",
+                "path": "/data/notes/semester-4/cse/graph/graph-syllabus1.pdf",
+                "type": "pdf",
+                "size": "2.4MB",
+                "uploadDate": "2025-01-31"
+              }]
             },
             {
               "id": "cse402",

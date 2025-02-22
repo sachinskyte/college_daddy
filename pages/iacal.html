@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Marks Calculator | College Buddy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../code\css\ia.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="College Buddy Home">
+                <i class="fas fa-graduation-cap"></i>
+                <span>College Daddy</span>
+            </a>
+            <button class="menu-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="../index.html" class="nav-link">
+                   
+                    <span>Home</span>
+                </a>
+                <a href="cgpa.html" class="nav-link ">
+                   
+                    <span>CGPA Calculator</span>
+                </a>
+                <a href="iacal.html" class="nav-link active">
+                    
+                    <span>IA Calculator</span>
+                </a>
+                <a href="pomodoro.html" class="nav-link">
+                    
+                    <span>Study timer</span>
+                </a>
+                <a href="notes.html" class="nav-link">
+                    
+                    <span>Notes </span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="header">
+            <h1>
+                <i class="fas fa-calculator"></i>
+                <span>Final Marks Calculator</span>
+            </h1>
+
+
+            <div class="calculator-mode" style="display: flex; justify-content: center; align-items: center;">
+                <!-- Label for Toggle Switch with Gap -->
+                <label style="display: flex; flex-direction: row; align-items: center; gap: 1cm;">
+                    <!-- Toggle Switch -->
+                    <input type="checkbox" id="labMode" class="switch" onchange="toggleLabMode(this)">
+                    
+                    <!-- Label Text -->
+                    <span style="font-size: 20px; font-weight: 500; color: #ffffff;">4 credit course</span>
+                </label>
+            </div>
+            
+            <style>
+            .tooltip {
+              position: relative;
+              display: inline-block;
+              margin-left: 0.5rem;
+            }
+            .switch {
+              position: relative;
+              height: 1.5rem;
+              width: 3rem;
+              cursor: pointer;
+              appearance: none;
+              -webkit-appearance: none;
+              border-radius: 9999px;
+              background-color: rgba(100, 116, 139, 0.377);
+              transition: all 0.3s ease;
+            }
+            
+            .switch:checked {
+              background-color: #00b3ff;
+            }
+            
+            .switch::before {
+              position: absolute;
+              content: "";
+              left: calc(1.5rem - 1.6rem);
+              top: calc(1.5rem - 1.6rem);
+              display: block;
+              height: 1.6rem;
+              width: 1.6rem;
+              cursor: pointer;
+              border: 1px solid rgba(100, 116, 139, 0.527);
+              border-radius: 9999px;
+              background-color: rgba(255, 255, 255, 1);
+              box-shadow: 0 3px 10px rgba(100, 116, 139, 0.327);
+              transition: all 0.3s ease;
+            }
+            
+            .switch:hover::before {
+              box-shadow: 0 0 0px 8px rgba(0, 0, 0, 0.15);
+            }
+            
+            .switch:checked:hover::before {
+              box-shadow: 0 0 0px 8px rgba(236, 72, 153, 0.15);
+            }
+            
+            .switch:checked:before {
+              transform: translateX(100%);
+              border-color: rgb(0, 110, 255);
+            }
+            </style>
+
+            <p>Calculate your total marks and SEE exam eligibility</p>
+        </div>
+
+        <form id="marksForm" onsubmit="event.preventDefault(); calculateMarks();">
+            <!-- Original Series Exams Section -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-book"></i>
+                    <span>Series Exams</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Each exam is out of 50 marks</span>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="series1">Series Exam 1</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="series1" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="series2">Series Exam 2</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="series2" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="series3">Series Exam 3</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="series3" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Original Assignments Section -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assignments</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Each assignment is out of 10 marks</span>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="assignment1">Assignment 1</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="assignment1" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="assignment2">Assignment 2</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="assignment2" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Original Module Tests Section -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Module Tests</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Each test is out of 10 marks</span>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="module1">Module Test 1</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="module1" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="module2">Module Test 2</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="module2" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="module3">Module Test 3</label>
+                        <span class="max-marks">/10</span>
+                        <input type="number" id="module3" min="0" max="10" step="0.5" placeholder="Enter marks">
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Lab Assessment Section (Initially Hidden) -->
+            <div id="labSection" class="section" style="display: none;">
+                <div class="section-title">
+                    <i class="fas fa-flask"></i>
+                    <span>Lab Assessment</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Lab external and internal marks</span>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="labInternal">Lab Internal</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="labInternal" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
+                    <div class="input-group">
+                        <label for="labExternal">Lab External</label>
+                        <span class="max-marks">/50</span>
+                        <input type="number" id="labExternal" min="0" max="50" step="0.5" placeholder="Enter marks">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Original Grace Marks Section -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-star"></i>
+                    <span>Grace Marks</span>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">Additional bonus marks (if any)</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="graceMarks">Grace Marks</label>
+                    <input type="number" id="graceMarks" min="0" max="10" step="0.5" placeholder="Enter grace marks (if any)">
+                </div>
+            </div>
+
+            <button type="submit">
+                <i class="fas fa-calculator"></i>
+                <span>Calculate Final Marks</span>
+            </button>
+        </form>
+
+        <div id="results" class="result-section">
+            <!-- Standard Results -->
+            <div class="regular-results">
+                <div class="result-item">
+                    <span class="result-label">Scaled Series Exam Marks</span>
+                    <span class="result-value" id="scaledSeries">0/30</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Scaled Assignment Marks</span>
+                    <span class="result-value" id="scaledAssignments">0/10</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Scaled Module Test Marks</span>
+                    <span class="result-value" id="scaledModules">0/10</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Grace Marks</span>
+                    <span class="result-value" id="graceMarksDisplay">0</span>
+                </div>
+            </div>
+
+            <!-- Lab Results (Initially Hidden) -->
+            <div id="labResults" class="lab-results" style="display: none;">
+                <div class="result-item">
+                    <span class="result-label">Lab Internal Contribution</span>
+                    <span class="result-value" id="labInternalMarks">0/25</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Lab External Contribution</span>
+                    <span class="result-value" id="labExternalMarks">0/25</span>
+                </div>
+               
+            </div>
+
+            <div class="result-item total-marks">
+                <span class="result-label">Total Marks</span>
+                <span class="result-value" id="totalMarks">0/50</span>
+            </div>
+            
+            <div id="eligibility" class="eligibility"></div>
+
+            <table id="gradeTable" class="grade-table">
+                <thead>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Points</th>
+                        <th>Required SEE Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="gradeTableBody"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../code/scripts/ia.js"></script>
+    
+</body>
+</html>

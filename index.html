@@ -207,10 +207,12 @@
             <button class="menu-button">☰</button>
             <nav class="nav-links">
                 
-                <a href="cgpa.html" class="nav-link">CGPA Calculator</a>
-                <a href="iacal.html" class="nav-link">IA Calculator</a>
-                <a href="pomodoro.html" class="nav-link">Study timer</a>
-                <a href="notes.html" class="nav-link">Notes</a>
+                <a href="pages/cgpa.html" class="nav-link">CGPA Calculator</a>
+
+                <a href="pages/iacal.html" class="nav-link">IA Calculator</a>
+                <a href="pages/pomodoro.html" class="nav-link">Study timer</a>
+                <a href="pages/notes.html" class="nav-link">Notes</a>
+                
                 
             </nav>
         </div>
@@ -225,29 +227,54 @@
 
         <div class="features" style="max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
             
-            <div onclick="window.location.href='cgpa.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
-                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📊</div>
-                <h3 style="color: #ffffff; margin-bottom: 15px;">CGPA Calculator</h3>
-                <p style="color: #a0a0a0; margin: 0;">Calculate your CGPA easily with our advanced calculator. Track your academic progress across semesters.</p>
-            </div>
-        
-            <div onclick="window.location.href='notes.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
-                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📒</div>
-                <h3 style="color: #ffffff; margin-bottom: 15px;">Notes</h3>
-                <p style="color: #a0a0a0; margin: 0;">Get notes, lab manuals, and question papers for all 8 semesters in one place! 📚 Perfect for exams, revisions, and practicals.</p>
-            </div>
-        
-            <div onclick="window.location.href='iacal.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
-                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📝</div>
-                <h3 style="color: #ffffff; margin-bottom: 15px;">IA Calculator</h3>
-                <p style="color: #a0a0a0; margin: 0;">Keep track of your internal assessment marks and calculate your best performances.</p>
-            </div>
-        
-            <div onclick="window.location.href='pomodoro.html'" class="feature-card" style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; border: 1px solid #009dff;">
-                <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">⏳</div>
-                <h3 style="color: #ffffff; margin-bottom: 15px;">Pomodoro Timer</h3>
-                <p style="color: #a0a0a0; margin: 0;">Boost your productivity with this simple Pomodoro timer! Stay focused by working in short sprints with regular breaks. ⏳✅</p>
-            </div>
+            <div ondblclick="window.location.href='pages/cgpa.html'" ontouchend="window.location.href='pages/cgpa.html'" 
+            title="Double click (or tap on mobile) to go to CGPA Calculator" 
+            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
+            onmouseover="this.style.backgroundColor='#002244';" 
+            onmouseout="this.style.backgroundColor='#000000';">
+           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📊</div>
+           <h3 style="color: #ffffff; margin-bottom: 15px;">CGPA Calculator</h3>
+           <p style="color: #a0a0a0; margin: 0;">Calculate your CGPA easily with our advanced calculator. Track your academic progress across semesters.</p>
+       </div>
+       
+       <div ondblclick="window.location.href='pages/notes.html'" ontouchend="window.location.href='pages/notes.html'" 
+            title="Double click (or tap on mobile) to go to Notes"
+            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
+            onmouseover="this.style.backgroundColor='#002244';" 
+            onmouseout="this.style.backgroundColor='#000000';">
+           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📒</div>
+           <h3 style="color: #ffffff; margin-bottom: 15px;">Notes</h3>
+           <p style="color: #a0a0a0; margin: 0;">Get notes, lab manuals, and question papers for all 8 semesters in one place! 📚 Perfect for exams, revisions, and practicals.</p>
+       </div>
+       
+       <div ondblclick="window.location.href='pages/iacal.html'" ontouchend="window.location.href='pages/iacal.html'" 
+            title="Double click (or tap on mobile) to go to IA Calculator"
+            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
+            onmouseover="this.style.backgroundColor='#002244';" 
+            onmouseout="this.style.backgroundColor='#000000';">
+           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📝</div>
+           <h3 style="color: #ffffff; margin-bottom: 15px;">IA Calculator</h3>
+           <p style="color: #a0a0a0; margin: 0;">Keep track of your internal assessment marks and calculate your best performances.</p>
+       </div>
+       
+       <div ondblclick="window.location.href='pages/pomodoro.html'" ontouchend="window.location.href='pages/pomodoro.html'" 
+            title="Double click (or tap on mobile) to go to Pomodoro Timer"
+            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
+            onmouseover="this.style.backgroundColor='#002244';" 
+            onmouseout="this.style.backgroundColor='#000000';">
+           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">⏳</div>
+           <h3 style="color: #ffffff; margin-bottom: 15px;">Pomodoro Timer</h3>
+           <p style="color: #a0a0a0; margin: 0;">Boost your productivity with this simple Pomodoro timer! Stay focused by working in short sprints with regular breaks. ⏳✅</p>
+       </div>
+       <div ondblclick="window.location.href='pages/roadmap.html'" ontouchend="window.location.href='pages/roadmap.html'" 
+            title="Double click (or tap on mobile) to go to Pomodoro Timer"
+            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
+            onmouseover="this.style.backgroundColor='#002244';" 
+            onmouseout="this.style.backgroundColor='#000000';">
+           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">🛤️</div>
+           <h3 style="color: #ffffff; margin-bottom: 15px;">Roadmaps</h3>
+           <p style="color: #a0a0a0; margin: 0;">Your guided path to mastering tech careers like AI, Full Stack, and more! 🚀</p>
+    </div>
         
         </div>
         

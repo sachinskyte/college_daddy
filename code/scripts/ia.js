@@ -72,9 +72,9 @@ function toggleLabSection() {
 function resetDisplays() {
     try {
         const elements = {
-            'scaledSeries': '0/25',
+            'scaledSeries': '0/30',
             'scaledAssignments': '0/10',
-            'scaledModules': '0/15',
+            'scaledModules': '0/10',
             'graceMarksDisplay': '0',
             'labInternalMarks': '0/25',
             'labExternalMarks': '0/25'
@@ -131,13 +131,13 @@ function calculateRegularMode() {
 
         // Calculate scaled marks
         const seriesAvg = (series1 + series2 + series3) / 3;
-        const scaledSeries = (seriesAvg / 50) * 25;
-
+        const scaledSeries = (seriesAvg / 50) * 30;
+0
         const assignmentTotal = assignment1 + assignment2;
         const scaledAssignments = (assignmentTotal / 20) * 10;
 
         const moduleTotal = module1 + module2 + module3;
-        const scaledModules = (moduleTotal / 30) * 15;
+        const scaledModules = (moduleTotal / 30) * 10;
 
         // Update displays
         updateScaledMarksDisplay(scaledSeries, scaledAssignments, scaledModules, graceMarks);
@@ -196,13 +196,13 @@ function calculateLabMode() {
 
         // Calculate internal components first (for eligibility)
         const seriesAvg = (series1 + series2 + series3) / 3;
-        const scaledSeries = (seriesAvg / 50) * 25;
+        const scaledSeries = (seriesAvg / 50) * 30;
 
         const assignmentTotal = assignment1 + assignment2;
         const scaledAssignments = (assignmentTotal / 20) * 10;
 
         const moduleTotal = module1 + module2 + module3;
-        const scaledModules = (moduleTotal / 30) * 15;
+        const scaledModules = (moduleTotal / 30) * 10;
 
         // Calculate total internal marks (out of 50 for eligibility check)
         const totalInternal = scaledSeries + scaledAssignments + scaledModules;
@@ -254,9 +254,9 @@ function calculateLabMode() {
 function updateScaledMarksDisplay(series, assignments, modules, grace) {
     try {
         const elements = {
-            'scaledSeries': `${series.toFixed(2)}/25`,
+            'scaledSeries': `${series.toFixed(2)}/30`,
             'scaledAssignments': `${assignments.toFixed(2)}/10`,
-            'scaledModules': `${modules.toFixed(2)}/15`,
+            'scaledModules': `${modules.toFixed(2)}/10`,
             'graceMarksDisplay': grace.toFixed(2)
         };
 
@@ -298,12 +298,17 @@ function displayGradeTable(currentMarks, isLabMode) {
 
         gradeScale.forEach(({ grade, points, minMarks }) => {
             if (isLabMode) {
-                // For lab mode, show achievable grades
-                if (currentMarks >= minMarks) {
-                    addGradeRow(tbody, grade, points, minMarks);
+                // For lab mode, calculate required SEE marks
+                // Current marks are out of 75, need to convert to percentage
+                const currentPercentage = (currentMarks / 75) * 50; // Convert to 50 marks scale
+                const requiredSEE = Math.ceil((minMarks - currentPercentage) * 2);
+                
+                // Only show grades that are achievable (SEE marks <= 100)
+                if (requiredSEE <= 100 && requiredSEE > 0) {
+                    addGradeRow(tbody, grade, points, requiredSEE);
                 }
             } else {
-                // For regular mode, show required SEE marks
+                // Regular mode calculation remains the same
                 const requiredSEE = Math.ceil((minMarks - currentMarks) * 2);
                 if (requiredSEE <= 100 && requiredSEE > 0) {
                     addGradeRow(tbody, grade, points, requiredSEE);

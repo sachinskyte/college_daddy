@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Roadmaps - College Daddy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../code\css\roadmap.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="College Buddy Home">
+                <i class="fas fa-graduation-cap"></i>
+                <span>College Daddy</span>
+            </a>
+            <button class="menu-button" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="../index.html" class="nav-link">
+                    <span>Home</span>
+                </a>
+                <a href="career-roadmaps.html" class="nav-link active">
+                    <span>Career Roadmaps</span>
+                </a>
+                <a href="roadmap_assets\ai-roadmap.html" class="nav-link">
+                    <span>CGPA Calculator</span>
+                </a>
+                <a href="iacal.html" class="nav-link">
+                    <span>IA Calculator</span>
+                </a>
+                <a href="pomodoro.html" class="nav-link">
+                    <span>Study timer</span>
+                </a>
+                <a href="notes.html" class="nav-link">
+                    <span>Notes</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main-container">
+        <h1>Career Roadmap Tracker</h1>
+        
+        <section class="roadmap-selection">
+           <div class="roadmap-card" data-roadmap="fullstack" onclick="window.location.href='roadmap_assets/ai-roadmap.html';" style="cursor: pointer;">
+    <div class="roadmap-icon">
+        <i class="fas fa-layer-group"></i>
+    </div>
+    <div class="roadmap-title">Full Stack Developer</div>
+    <div class="roadmap-description">Master both frontend and backend development</div>
+</div>
+
+            
+            
+            <div class="roadmap-card" data-roadmap="aiml">
+                <div class="roadmap-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="roadmap-title">AI & ML</div>
+                <div class="roadmap-description">Dive into artificial intelligence and machine learning</div>
+            </div>
+            
+            <div class="roadmap-card" data-roadmap="mobile">
+                <div class="roadmap-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="roadmap-title">Mobile App Developer</div>
+                <div class="roadmap-description">Create native and cross-platform mobile applications</div>
+            </div>
+            
+            <div class="roadmap-card" data-roadmap="cloud">
+                <div class="roadmap-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <div class="roadmap-title">Cloud Computing</div>
+                <div class="roadmap-description">Master cloud infrastructure and deployment</div>
+            </div>
+            
+            <div class="roadmap-card" data-roadmap="security">
+                <div class="roadmap-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="roadmap-title">Cybersecurity</div>
+                <div class="roadmap-description">Protect systems and networks from digital attacks</div>
+            </div>
+            
+            <div class="roadmap-card" data-roadmap="blockchain">
+                <div class="roadmap-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <div class="roadmap-title">Blockchain & Web3</div>
+                <div class="roadmap-description">Develop decentralized applications and smart contracts</div>
+            </div>
+        </section>
+        
+        <div id="roadmap-content">
+            <div class="placeholder-message" style="text-align: center; padding: 3rem 1rem;">
+                <i class="fas fa-hand-point-up" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
+                <h2>Select a career path above to view your roadmap</h2>
+                <p>Track your progress and follow structured learning paths to achieve your career goals</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../code\scripts\roadmap.js"></script>
+</body>
+</html>
