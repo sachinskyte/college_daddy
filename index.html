@@ -19,28 +19,20 @@
             --text-light: #ffffff;
             --text-gray: #a0a0a0;
         }
-.footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-gray);
-    background-color: var(--bg-darker);
-    margin-top: 3rem;
-}
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            background-color: var(--bg-darker);
+            margin-top: 3rem;
+        }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
             min-height: 100vh;
         }
-        .logo {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
 
         header {
             background-color: var(--bg-darker);
@@ -61,10 +53,13 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 1.5rem;
             color: var(--primary-color);
             text-decoration: none;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .nav-links {
@@ -117,44 +112,17 @@
             background-color: var(--bg-darker);
             padding: 30px;
             border-radius: 12px;
+            border: 1px solid var(--primary-color);
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            touch-action: manipulation;
         }
 
         .feature-icon {
             font-size: 40px;
             color: var(--primary-color);
             margin-bottom: 20px;
-        }
-
-        .quick-actions {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .stat-card {
-            background-color: var(--bg-darker);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 24px;
-            color: var(--primary-color);
-            margin: 10px 0;
         }
 
         .menu-button {
@@ -193,6 +161,10 @@
             .hero p {
                 font-size: 1rem;
             }
+
+            .features {
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -203,18 +175,13 @@
                 <i class="fas fa-graduation-cap"></i>
                 College Daddy
             </a>
-            
-            <button class="menu-button">☰</button>
+            <button class="menu-button" aria-label="Toggle navigation menu">☰</button>
             <nav class="nav-links">
-                
                 <a href="pages/cgpa.html" class="nav-link">CGPA Calculator</a>
-
                 <a href="pages/iacal.html" class="nav-link">IA Calculator</a>
                 <a href="pages/pomodoro.html" class="nav-link">Study timer</a>
                 <a href="pages/notes.html" class="nav-link">Notes</a>
                 <a href="pages/roadmap.html" class="nav-link">Roadmap</a>
-                
-                
             </nav>
         </div>
     </header>
@@ -224,290 +191,165 @@
         <p>Your ultimate companion for academic success. Track your progress, calculate your grades, and stay organized throughout your college journey.</p>
     </section>
 
-    <body style="background-color: #000000; color: #ffffff; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div class="features">
+        <div class="feature-card" data-url="pages/cgpa.html">
+            <div class="feature-icon">📊</div>
+            <h3>CGPA Calculator</h3>
+            <p>Calculate your CGPA easily with our advanced calculator. Track your academic progress across semesters.</p>
+        </div>
 
-        <div class="features" style="max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            
-            <div ondblclick="window.location.href='pages/cgpa.html'" ontouchend="window.location.href='pages/cgpa.html'" 
-            title="Double click (or tap on mobile) to go to CGPA Calculator" 
-            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
-            onmouseover="this.style.backgroundColor='#002244';" 
-            onmouseout="this.style.backgroundColor='#000000';">
-           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📊</div>
-           <h3 style="color: #ffffff; margin-bottom: 15px;">CGPA Calculator</h3>
-           <p style="color: #a0a0a0; margin: 0;">Calculate your CGPA easily with our advanced calculator. Track your academic progress across semesters.</p>
-       </div>
-       
-       <div ondblclick="window.location.href='pages/notes.html'" ontouchend="window.location.href='pages/notes.html'" 
-            title="Double click (or tap on mobile) to go to Notes"
-            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
-            onmouseover="this.style.backgroundColor='#002244';" 
-            onmouseout="this.style.backgroundColor='#000000';">
-           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📒</div>
-           <h3 style="color: #ffffff; margin-bottom: 15px;">Notes</h3>
-           <p style="color: #a0a0a0; margin: 0;">Get notes, lab manuals, and question papers for all 8 semesters in one place! 📚 Perfect for exams, revisions, and practicals.</p>
-       </div>
-       
-       <div ondblclick="window.location.href='pages/iacal.html'" ontouchend="window.location.href='pages/iacal.html'" 
-            title="Double click (or tap on mobile) to go to IA Calculator"
-            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
-            onmouseover="this.style.backgroundColor='#002244';" 
-            onmouseout="this.style.backgroundColor='#000000';">
-           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">📝</div>
-           <h3 style="color: #ffffff; margin-bottom: 15px;">IA Calculator</h3>
-           <p style="color: #a0a0a0; margin: 0;">Keep track of your internal assessment marks and calculate your best performances.</p>
-       </div>
-       
-       <div ondblclick="window.location.href='pages/pomodoro.html'" ontouchend="window.location.href='pages/pomodoro.html'" 
-            title="Double click (or tap on mobile) to go to Pomodoro Timer"
-            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
-            onmouseover="this.style.backgroundColor='#002244';" 
-            onmouseout="this.style.backgroundColor='#000000';">
-           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">⏳</div>
-           <h3 style="color: #ffffff; margin-bottom: 15px;">Pomodoro Timer</h3>
-           <p style="color: #a0a0a0; margin: 0;">Boost your productivity with this simple Pomodoro timer! Stay focused by working in short sprints with regular breaks. ⏳✅</p>
-       </div>
-       <div ondblclick="window.location.href='pages/roadmap.html'" ontouchend="window.location.href='pages/roadmap.html'" 
-            title="Double click (or tap on mobile) to go to Pomodoro Timer"
-            style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
-            onmouseover="this.style.backgroundColor='#002244';" 
-            onmouseout="this.style.backgroundColor='#000000';">
-           <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">🛤️</div>
-           <h3 style="color: #ffffff; margin-bottom: 15px;">Roadmaps</h3>
-           <p style="color: #a0a0a0; margin: 0;">Your guided path to mastering tech careers like AI, Full Stack, and more! 🚀</p>
+        <div class="feature-card" data-url="pages/notes.html">
+            <div class="feature-icon">📒</div>
+            <h3>Notes</h3>
+            <p>Get notes, lab manuals, and question papers for all 8 semesters in one place! Perfect for exams, revisions, and practicals.</p>
+        </div>
+
+        <div class="feature-card" data-url="pages/iacal.html">
+            <div class="feature-icon">📝</div>
+            <h3>IA Calculator</h3>
+            <p>Keep track of your internal assessment marks and calculate your best performances.</p>
+        </div>
+
+        <div class="feature-card" data-url="pages/pomodoro.html">
+            <div class="feature-icon">⏳</div>
+            <h3>Pomodoro Timer</h3>
+            <p>Boost your productivity with this simple Pomodoro timer! Stay focused by working in short sprints with regular breaks.</p>
+        </div>
+
+        <div class="feature-card" data-url="pages/roadmap.html">
+            <div class="feature-icon">🛤️</div>
+            <h3>Roadmaps</h3>
+            <p>Your guided path to mastering tech careers like AI, Full Stack, and more!</p>
+        </div>
+
+        <div class="feature-card" data-url="https://www.indiabix.com/">
+            <div class="feature-icon">🧠</div>
+            <h3>Aptitude</h3>
+            <p>Sharpen your problem-solving skills with the best aptitude resources!</p>
+        </div>
     </div>
 
-    <div ondblclick="window.location.href='https://www.indiabix.com/'" 
-     ontouchend="window.location.href='https://www.indiabix.com/'" 
-     title="Double click (or tap on mobile) to go to IndiaBix"
-     style="background-color: #000000; padding: 30px; border-radius: 12px; text-align: center; transition: 0.3s ease; cursor: pointer; border: 1px solid #009dff;"
-     onmouseover="this.style.backgroundColor='#002244';" 
-     onmouseout="this.style.backgroundColor='#000000';">
-    <div style="font-size: 40px; color: #009dff; margin-bottom: 20px;">🧠</div>
-    <h3 style="color: #ffffff; margin-bottom: 15px;">Aptitude</h3>
-    <p style="color: #a0a0a0; margin: 0;">Sharpen your problem-solving skills with the best aptitude resources! 🚀</p>
-</div>
-
-        
-        </div>
-        
-        <script>
-            
-        document.querySelectorAll('.feature-card').forEach(card => {
-            // Add hover effect
-            card.addEventListener('mouseover', function() {
-                this.style.transform = 'translateY(-5px)';
-                this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
-                this.style.backgroundColor = '#111111';
-            });
-        
-            // Remove hover effect
-            card.addEventListener('mouseout', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = 'none';
-                this.style.backgroundColor = '#000000';
-            });
-        
-            // Add click effect
-            card.addEventListener('mousedown', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 2px 5px rgba(0, 157, 255, 0.2)';
-            });
-        
-            // Remove click effect
-            card.addEventListener('mouseup', function() {
-                this.style.transform = 'translateY(-5px)';
-                this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
-            });
-        });
-        </script>
-
-
-    <script>
-        function isMobile() {
-    return window.innerWidth <= 768;
-}
-
-// Initialize mobile menu
-// Mobile menu functionality
-const menuButton = document.querySelector('.menu-button');
-const navLinks = document.querySelector('.nav-links');
-
-menuButton.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Initialize mobile menu
-function initializeMobileMenu() {
-    const menuButton = document.querySelector('.menu-button');
-    const navLinks = document.querySelector('.nav-links');
-    const cards = document.querySelectorAll('.feature-card');
-
-    // Show/hide menu based on screen size
-    if (window.innerWidth <= 768) {
-        menuButton.style.display = 'block';
-        cards.forEach(card => {
-            card.style.minWidth = '100%';
-        });
-    } else {
-        menuButton.style.display = 'none';
-        navLinks.classList.remove('active');
-        cards.forEach(card => {
-            card.style.minWidth = '300px';
-        });
-    }
-}
-
-// Card navigation and effects
-document.querySelectorAll('.feature-card').forEach(card => {
-    // Touch start effect for mobile
-    card.addEventListener('touchstart', function() {
-        this.style.transform = 'scale(0.98)';
-        this.style.backgroundColor = '#111111';
-    });
-
-    // Touch end effect for mobile
-    card.addEventListener('touchend', function() {
-        this.style.transform = 'scale(1)';
-        this.style.backgroundColor = '#000000';
-        const url = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-        window.location.href = url;
-    });
-
-    // Mouse hover effects for desktop
-    card.addEventListener('mouseover', function() {
-        if (window.innerWidth > 768) {
-            this.style.transform = 'translateY(-5px)';
-            this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
-            this.style.backgroundColor = '#111111';
-        }
-    });
-
-    card.addEventListener('mouseout', function() {
-        if (window.innerWidth > 768) {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = 'none';
-            this.style.backgroundColor = '#000000';
-        }
-    });
-});
-
-// Initialize on load and resize
-window.addEventListener('load', initializeMobileMenu);
-window.addEventListener('resize', initializeMobileMenu);
-// Toggle mobile menu
-document.getElementById('menuButton').addEventListener('click', function() {
-    const mobileNav = document.getElementById('mobileNav');
-    if (mobileNav.style.display === 'none' || !mobileNav.style.display) {
-        mobileNav.style.display = 'block';
-        this.style.backgroundColor = '#000000';
-    } else {
-        mobileNav.style.display = 'none';
-        this.style.backgroundColor = '#009dff';
-    }
-});
-
-// Navigation function
-function navigateTo(url) {
-    if (!isMobile()) {
-        window.location.href = url;
-    }
-}
-
-// Card hover effects
-document.querySelectorAll('.feature-card').forEach(card => {
-    // Touch start effect for mobile
-    card.addEventListener('touchstart', function(e) {
-        this.style.transform = 'scale(0.98)';
-        this.style.backgroundColor = '#111111';
-    });
-
-    // Touch end effect for mobile
-    card.addEventListener('touchend', function(e) {
-        this.style.transform = 'scale(1)';
-        this.style.backgroundColor = '#000000';
-        const url = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-        window.location.href = url;
-    });
-
-    // Mouse hover effects for desktop
-    card.addEventListener('mouseover', function() {
-        if (!isMobile()) {
-            this.style.transform = 'translateY(-5px)';
-            this.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
-            this.style.backgroundColor = '#111111';
-        }
-    });
-
-    card.addEventListener('mouseout', function() {
-        if (!isMobile()) {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = 'none';
-            this.style.backgroundColor = '#000000';
-        }
-    });
-});
-
-// Initialize on load
-window.addEventListener('load', initializeMobileMenu);
-
-// Handle resize
-window.addEventListener('resize', initializeMobileMenu);
-
-// Handle orientation change
-window.addEventListener('orientationchange', initializeMobileMenu);
-// Touch handling variables
-let touchStartY = 0;
-let touchEndY = 0;
-const MIN_SWIPE_DISTANCE = 10;
-
-document.querySelectorAll('.features > div').forEach(card => {
-    // Remove existing touch handlers
-    card.removeEventListener('touchend', null);
-    card.removeEventListener('touchstart', null);
-
-    // New touch start handler
-    card.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-        // Apply pressed state
-        card.style.transform = 'scale(0.98)';
-        card.style.backgroundColor = '#111111';
-    });
-
-    // Touch move handler
-    card.addEventListener('touchmove', (e) => {
-        touchEndY = e.touches[0].clientY;
-        // If user is scrolling, remove pressed state
-        if (Math.abs(touchEndY - touchStartY) > MIN_SWIPE_DISTANCE) {
-            card.style.transform = 'scale(1)';
-            card.style.backgroundColor = '#000000';
-        }
-    });
-
-    // Touch end handler
-    card.addEventListener('touchend', (e) => {
-        const finalTouchY = e.changedTouches[0].clientY;
-        // Reset styles
-        card.style.transform = 'scale(1)';
-        card.style.backgroundColor = '#000000';
-
-        // Only navigate if it was a tap (not a scroll)
-        if (Math.abs(finalTouchY - touchStartY) < MIN_SWIPE_DISTANCE) {
-            const url = card.getAttribute('ondblclick').match(/href='([^']+)'/)[1];
-            window.location.href = url;
-        }
-    });
-
-    // Remove the ondblclick and ontouchend attributes
-    card.removeAttribute('ondblclick');
-    card.removeAttribute('ontouchend');
-});
-</script>
-    </script>
-     <footer class="footer">
-        <p>&copy; 2025 College Daddy. All rights reserved. Devloped by Sachin</p>
+    <footer class="footer">
+        <p>&copy; 2025 College Daddy. All rights reserved. Developed by Sachin</p>
     </footer>
 
+    <script>
+        // Utility function to detect mobile devices
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
 
+        // Initialize mobile menu
+        function initMobileMenu() {
+            const menuButton = document.querySelector('.menu-button');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuButton && navLinks) {
+                menuButton.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (navLinks.classList.contains('active') && 
+                        !e.target.closest('.nav-links') && 
+                        !e.target.closest('.menu-button')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Initialize feature cards
+        function initFeatureCards() {
+            const cards = document.querySelectorAll('.feature-card');
+            const isMobileDevice = isMobile();
+
+            cards.forEach(card => {
+                if (isMobileDevice) {
+                    // Mobile touch handling
+                    let touchStartY = 0;
+                    let touchEndY = 0;
+                    const MIN_SWIPE_DISTANCE = 10;
+                    let isScrolling = false;
+                    let touchStartTime = 0;
+
+                    card.addEventListener('touchstart', (e) => {
+                        touchStartY = e.touches[0].clientY;
+                        touchStartTime = Date.now();
+                        isScrolling = false;
+                        
+                        // Add pressed state
+                        card.style.transform = 'scale(0.98)';
+                        card.style.backgroundColor = '#111111';
+                    });
+
+                    card.addEventListener('touchmove', (e) => {
+                        touchEndY = e.touches[0].clientY;
+                        
+                        // Check if user is scrolling
+                        if (Math.abs(touchEndY - touchStartY) > MIN_SWIPE_DISTANCE) {
+                            isScrolling = true;
+                            // Remove pressed state
+                            card.style.transform = 'scale(1)';
+                            card.style.backgroundColor = '#000000';
+                        }
+                    });
+
+                    card.addEventListener('touchend', (e) => {
+                        const touchEndTime = Date.now();
+                        const touchDuration = touchEndTime - touchStartTime;
+                        
+                        // Reset styles
+                        card.style.transform = 'scale(1)';
+                        card.style.backgroundColor = '#000000';
+
+                        // Navigate only if it was a tap (not a scroll) and touch duration was short
+                        if (!isScrolling && touchDuration < 300) {
+                            const url = card.getAttribute('data-url');
+                            if (url) {
+                                window.location.href = url;
+                            }
+                        }
+                    });
+                } else {
+                    // Desktop double-click handling
+                    card.addEventListener('dblclick', () => {
+                        const url = card.getAttribute('data-url');
+                        if (url) {
+                            window.location.href = url;
+                        }
+                    });
+
+                    // Desktop hover effects
+                    card.addEventListener('mouseover', () => {
+                        card.style.transform = 'translateY(-5px)';
+                        card.style.boxShadow = '0 5px 15px rgba(0, 157, 255, 0.3)';
+                        card.style.backgroundColor = '#111111';
+                    });
+
+                    card.addEventListener('mouseout', () => {
+                        card.style.transform = 'translateY(0)';
+                        card.style.boxShadow = 'none';
+                        card.style.backgroundColor = '#000000';
+                    });
+                }
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileMenu();
+            initFeatureCards();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const navLinks = document.querySelector('.nav-links');
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
