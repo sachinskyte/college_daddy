@@ -411,6 +411,8 @@ button:active {
     background-color: var(--bg-darker);
     margin-top: 3rem;
 }
+
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .menu-button {

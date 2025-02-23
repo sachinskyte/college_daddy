@@ -10,8 +10,19 @@ The original name, "College Buddy," was not available as a domain, so we rebrand
 - **Internal Marks Calculator**: Predict your internal marks and assess your academic standing. It also helps determine if you are eligible for the end-semester exam and calculates how many marks you need in the final exam to achieve your desired grade.
 - **Notes Repository**: Access all 8 semesters of engineering notes in one place.
 - **Pomodoro Study Timer**: Boost productivity with a built-in study timer designed for effective learning. It also includes built-in study music to help maintain focus.
-- **Roadmaps & Career Guidance**:Get structured learning roadmaps for various career paths, including AI, Full Stack Development, and Cybersecurity. Each roadmap includes recommended learning resources and skill-building steps.
-- **Aptitude Preparation:**:Direct access to aptitude test preparation resources via IndiaBix, offering practice questions in quantitative, logical, and verbal reasoning, along with interview preparation materials.
+- **Roadmaps & Career Guidance**: Get structured learning roadmaps for various career paths, including AI, Full Stack Development, and Cybersecurity. Each roadmap includes recommended learning resources and skill-building steps.
+- **Aptitude Preparation**: Direct access to aptitude test preparation resources via IndiaBix, offering practice questions in quantitative, logical, and verbal reasoning, along with interview preparation materials.
+
+## How You Can Contribute
+If you're interested in contributing, here are some ways to help improve College Daddy:
+
+### Feature Enhancements
+- **Enhance UI/UX**: Improve the user experience by making navigation smoother and adding better visuals.
+- **Expand the Notes Section**: Upload more semester-wise notes or create subject-specific summaries.
+- **Optimize Performance**: Improve loading speeds and backend efficiency.
+- **Add More Career Roadmaps**: Include roadmaps for additional domains like Data Science, DevOps, or Blockchain.
+- **Chatbot for PDFs**: Build a chatbot that interacts with PDFs and generates questions based on the content.
+- **Code Typing Speed Test**: Create a code typing speed test with analytics to track improvement over time.
 
 ## Why College Daddy?
 Many students struggle with organizing and sharing notes, and traditional methods like Google Drive can be cumbersome. To solve this, College Daddy provides a structured platform for accessing and managing study materials. Additionally, students often find it difficult to calculate their internal marks, leading to uncertainty about their final grades. This tool integrates multiple solutions into one convenient platform, making it an all-in-one academic assistant.

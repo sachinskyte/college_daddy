@@ -424,7 +424,112 @@ input:focus {
         grid-template-columns: 1fr;
     }
 }
+.footer {
+    text-align: center;
+    padding: 25px 15px;
+    background-color: #000000;
+    color: #a0a0a0;
+    border-top: 2px solid #009dff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
 
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #009dff, transparent);
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.footer p:hover {
+    transform: translateY(-2px);
+}
+
+.footer .tagline {
+    font-style: italic;
+    color: #888888;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.feedback-link {
+    display: inline-block;
+    color: #009dff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid #009dff;
+    transition: all 0.3s ease;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-link:hover {
+    color: #fff;
+    background: #009dff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 157, 255, 0.2);
+}
+
+.feedback-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.feedback-link:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+.developer-name {
+    font-weight: 500;
+    color: #b8b8b8;
+    transition: all 0.3s ease;
+}
+
+.developer-name:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 10px;
+    }
+    
+    .footer p {
+        font-size: 1rem;
+    }
+    
+    .footer .tagline {
+        font-size: 0.8rem;
+    }
+}
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
     * {
