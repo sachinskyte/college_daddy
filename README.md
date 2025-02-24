@@ -34,11 +34,11 @@ Experience College Daddy live: [College Daddy Demo](https://collegedaddy.vercel.
 To use College Daddy locally, follow these steps:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sachinskyte/college_buddy.git
+   git clone https://github.com/sachinskyte/college_daddy.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd college_buddy
+   cd college_daddy
    ```
 3. Open the `index.html` file in your browser.
 
