@@ -9,10 +9,11 @@ class PomodoroTimer {
         this.startTime = null;
         this.pausedTime = null;
         this.setupElements();
+        this.loadStoredSettings();
         this.setupEventListeners();
-        this.loadSettings();
         this.resetTimer();
         this.updateDisplay();
+        this.updateStats();
     }
 
     setupElements() {
@@ -46,6 +47,9 @@ class PomodoroTimer {
         this.totalFocusTimeDisplay = document.getElementById('total-focus-time');
         this.currentStreakDisplay = document.getElementById('current-streak');
 
+        // Notification element
+        this.notification = document.getElementById('notification');
+
         // Initialize progress ring
         if (this.progressRing) {
             this.circumference = 2 * Math.PI * parseFloat(this.progressRing.getAttribute('r'));
@@ -69,6 +73,7 @@ class PomodoroTimer {
         if (this.settingsIcon && this.settingsPanel) {
             this.settingsIcon.addEventListener('click', () => {
                 this.settingsPanel.classList.toggle('show');
+                this.updateSettingsInputs();
             });
         }
         if (this.applySettingsBtn) {
@@ -76,7 +81,7 @@ class PomodoroTimer {
         }
 
         // YouTube controls
-        if (this.addYoutubeBtn) {
+        if (this.addYoutubeBtn && this.youtubeInput) {
             this.addYoutubeBtn.addEventListener('click', () => this.loadYoutubeVideo());
         }
         if (this.volumeSlider) {
@@ -85,25 +90,92 @@ class PomodoroTimer {
 
         // Close settings panel when clicking outside
         document.addEventListener('click', (e) => {
-            if (this.settingsPanel && !this.settingsPanel.contains(e.target) && 
+            if (this.settingsPanel && this.settingsIcon && 
+                !this.settingsPanel.contains(e.target) && 
                 !this.settingsIcon.contains(e.target)) {
                 this.settingsPanel.classList.remove('show');
             }
         });
+
+        // Save settings on inputs change
+        const settingsInputs = [this.workDurationInput, this.shortBreakInput, this.longBreakInput, this.pomodorosCountInput];
+        settingsInputs.forEach(input => {
+            if (input) {
+                input.addEventListener('change', () => this.validateInput(input));
+            }
+        });
     }
 
-    loadSettings() {
-        this.settings = {
-            workDuration: parseInt(this.workDurationInput?.value) || 25,
-            shortBreak: parseInt(this.shortBreakInput?.value) || 5,
-            longBreak: parseInt(this.longBreakInput?.value) || 15,
-            pomodorosUntilLongBreak: parseInt(this.pomodorosCountInput?.value) || 4
-        };
+    validateInput(input) {
+        if (!input) return;
+        
+        let value = parseInt(input.value);
+        const min = parseInt(input.getAttribute('min') || 1);
+        const max = parseInt(input.getAttribute('max') || 60);
+        
+        if (isNaN(value) || value < min) {
+            value = min;
+        } else if (value > max) {
+            value = max;
+        }
+        
+        input.value = value;
     }
+
+    loadStoredSettings() {
+        try {
+            const savedSettings = localStorage.getItem('pomodoroSettings');
+            if (savedSettings) {
+                this.settings = JSON.parse(savedSettings);
+                this.updateSettingsInputs();
+            } else {
+                this.loadDefaultSettings();
+            }
+        } catch (e) {
+            console.error('Error loading settings:', e);
+            this.loadDefaultSettings();
+        }
+    }
+
+    loadDefaultSettings() {
+        this.settings = {
+            workDuration: 25,
+            shortBreak: 5,
+            longBreak: 15,
+            pomodorosUntilLongBreak: 4
+        };
+        this.updateSettingsInputs();
+    }
+
+    updateSettingsInputs() {
+        if (this.workDurationInput) this.workDurationInput.value = this.settings.workDuration;
+        if (this.shortBreakInput) this.shortBreakInput.value = this.settings.shortBreak;
+        if (this.longBreakInput) this.longBreakInput.value = this.settings.longBreak;
+        if (this.pomodorosCountInput) this.pomodorosCountInput.value = this.settings.pomodorosUntilLongBreak;
+    }
+
     applySettings() {
-        this.loadSettings();
+        const workDuration = parseInt(this.workDurationInput?.value) || 25;
+        const shortBreak = parseInt(this.shortBreakInput?.value) || 5;
+        const longBreak = parseInt(this.longBreakInput?.value) || 15;
+        const pomodorosUntilLongBreak = parseInt(this.pomodorosCountInput?.value) || 4;
+
+        this.settings = {
+            workDuration,
+            shortBreak,
+            longBreak,
+            pomodorosUntilLongBreak
+        };
+
+        try {
+            localStorage.setItem('pomodoroSettings', JSON.stringify(this.settings));
+        } catch (e) {
+            console.error('Error saving settings:', e);
+        }
+
         this.resetTimer();
         this.showNotification('Settings applied successfully');
+        this.settingsPanel.classList.remove('show');
     }
 
     resetTimer() {
@@ -236,14 +308,37 @@ class PomodoroTimer {
             this.completedPomodorosDisplay.textContent = this.completedPomodoros;
         }
         if (this.totalFocusTimeDisplay) {
-            this.totalFocusTimeDisplay.textContent = this.totalFocusTime;
+            this.totalFocusTimeDisplay.textContent = this.formatFocusTime(this.totalFocusTime);
         }
         if (this.currentStreakDisplay) {
             this.currentStreakDisplay.textContent = this.currentStreak;
         }
+
+        // Save stats
+        try {
+            localStorage.setItem('pomodoroStats', JSON.stringify({
+                completedPomodoros: this.completedPomodoros,
+                totalFocusTime: this.totalFocusTime,
+                currentStreak: this.currentStreak
+            }));
+        } catch (e) {
+            console.error('Error saving stats:', e);
+        }
+    }
+
+    formatFocusTime(minutes) {
+        if (minutes < 60) {
+            return `${minutes} min`;
+        } else {
+            const hours = Math.floor(minutes / 60);
+            const mins = minutes % 60;
+            return `${hours}h ${mins}m`;
+        }
     }
 
     loadYoutubeVideo() {
+        if (!this.youtubeInput || !this.youtubeContainer) return;
+        
         const url = this.youtubeInput.value;
         const videoId = this.extractVideoId(url);
         
@@ -303,56 +398,65 @@ class PomodoroTimer {
     }
 
     showNotification(message) {
-        const notification = document.getElementById('notification');
-        if (!notification) return;
+        if (!this.notification) {
+            console.log('Notification:', message);
+            return;
+        }
 
-        notification.textContent = message;
-        notification.classList.add('show');
+        this.notification.textContent = message;
+        this.notification.classList.add('show');
 
         setTimeout(() => {
-            notification.classList.remove('show');
+            this.notification.classList.remove('show');
         }, 3000);
     }
-
     
     playNotificationSound() {
         const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PurWYcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DstmwhBTGH0fPTgjMGHm7A7+OZSA0PVqzn77BeGQc+ltryxnMpBSl+zPLaizsIGGS57OihUBELTKXh765qHgU2jdXzzn0vBSF1xe/glEILElyx6OyrWBUIQ5zd77lxJAUuhM/z1YU2Bxtqvu7mnEoODlOq5vCzYRoGPJPY88p2KwUme8rx3I4+CRZiturqpVITC0mi4O+ybSAFM4nU89GAPAYeb8Lv45xMDw9WrOfte2IdBiqDz/PXiDkHGWe87emjURIKSqPg77FtIAUxiNPz04Q+Bhxswe/mnk4PD1Sp5PC1YxwGOpDY89F6LgUkedDy3pJCChVfsOnrrFcXCEGa3vC8dSYFL4PP89qLPQcZar7u6KBQEAxQp+TxuGYeBjqQ2PPTfDAFI3fO8uCWRgsUXLLo7a5aGQdAlN3wvngnBS2BzvPcjz8HF2i87+qjUxEMTaTi8LVpIAY3jdbz1oM0BSBxze/kmEoOElqw6O+xXRoGPZjb8MF8KQUrgc3z3pJCChVesenrsF4cBzWL1fPYhjcGH27C7+adTQ8OVKrk8bdnHwY4j9fz1X8yBSF3zPLimUwOEVeu5/CzYBwGN4zW89qJOwYba8Dv6KFQEQxPpuPwtmsgBTaJ1PPahzgGHmzB7+ihUBEMTqXj8LdoIAU2i9Tz2ok6BhpswO/po1IRDEyl4/C4ayAFNYrV89qKOgYabcDv6aJREQxLpePwuGwgBTaL1fPaiToGGmzA7+mjUhEMTKXj8LhrIAU1itXz2oo6BhptwO/polERDEul4/C4bCAFNovV89qJOgYabMDv6aNSEQxMpePwuGsgBTWK1fPaijoGGm3A7+miUREMS6Xj8LhsIAU2i9Xz2ok6BhpswO/po1IRDEyl4/C4ayAFNYrV89qKOgYabcDv6aJREQxLpePwuGwgBTaL1fPaiToGGmzA7+mjUhEMTKXj8LhrIAU1itXz2oo6BhptwO/polERDEul4/C4bCAFNovV89qJOgYabMDv6aNSEQxMpePwuGsgBTWK1fPaijoGGm3A7+miUREMS6Xj8LhsIAU2i9Xz2ok6BhpswO/po1IRDEyl4/C4ayAFNYrV89qKOgYabcDv6aJREQxLpePwuGwgBTaL1fPaiToGGmzA7+mjUhEMTKXj8LhrIAU1itXz2oo6BhptwO/polERDEul4/C4bCAFNovV89qJOgYabMDv6aNSEQxMpePwuGsgBTWK1fPaijoGGm3A7+miUREMS6Xj8LhsIAU2i9Xz2ok6BhpswO/po1IRDEyl4/C4ayAFNYrV89qKOgYabcDv6aJREQxLpePwuGwgBTaL1fPaiToGGmzA7+mjUhEMTKXj8LhrIAU1itXz2oo6BhptwO/polERDEul');
         audio.play();
     }
 }
-const feedbackLink = document.querySelector('.feedback-link');
 
-feedbackLink.addEventListener('click', (e) => {
-    const ripple = document.createElement('div');
-    ripple.style.position = 'absolute';
-    ripple.style.borderRadius = '50%';
-    ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-    ripple.style.width = '20px';
-    ripple.style.height = '20px';
-    ripple.style.transform = 'translate(-50%, -50%)';
-    ripple.style.animation = 'ripple 0.6s linear';
-    ripple.style.left = `${e.clientX - e.target.offsetLeft}px`;
-    ripple.style.top = `${e.clientY - e.target.offsetTop}px`;
+// Feedback button ripple effect
+document.addEventListener('DOMContentLoaded', () => {
+    const feedbackLink = document.querySelector('.feedback-link');
+    
+    if (feedbackLink) {
+        feedbackLink.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.left = `${e.clientX - e.target.getBoundingClientRect().left}px`;
+            ripple.style.top = `${e.clientY - e.target.getBoundingClientRect().top}px`;
 
-    feedbackLink.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-});
-
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        0% {
-            width: 0;
-            height: 0;
-            opacity: 0.5;
-        }
-        100% {
-            width: 200px;
-            height: 200px;
-            opacity: 0;
-        }
+            feedbackLink.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
     }
-`;
-document.head.appendChild(style);
-// Initialize the timer
-const timer = new PomodoroTimer();
+
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0.5;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize the timer
+    const timer = new PomodoroTimer();
+});
